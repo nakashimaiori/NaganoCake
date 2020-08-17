@@ -1,5 +1,42 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'customers/show'
+  end
+  namespace :public do
+    get 'deliveries/index'
+  end
+  namespace :public do
+    get 'orders/index'
+  end
+  namespace :public do
+    get 'cart_items/index'
+  end
+  namespace :public do
+    get 'products/show'
+    get 'products/index'
+  end
+  namespace :admin do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/index'
+  end
+  namespace :admin do
+    get 'homes/top'
+  end
+  namespace :admin do
+    get 'products/new'
+    get 'products/show'
+    get 'products/edit'
+    get 'products/index'
+  end
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+  end
+  namespace :admin do
+    get 'genres/show'
+  end
   root 'public/products#top'
 
   devise_for :admin, controllers: {
