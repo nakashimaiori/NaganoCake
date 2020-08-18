@@ -1,54 +1,18 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'customers/show'
-  end
-  namespace :public do
-    get 'deliveries/index'
-  end
-  namespace :public do
-    get 'orders/index'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'products/show'
-    get 'products/index'
-  end
-  namespace :admin do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/index'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :admin do
-    get 'products/new'
-    get 'products/show'
-    get 'products/edit'
-    get 'products/index'
-  end
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'genres/show'
-  end
+
   root 'public/products#top'
 
   devise_for :admin, controllers: {
-    sessions:      'admin/sessions',
-    passwords:     'admin/passwords',
-    registrations: 'admin/registrations'
+    sessions:      'admin/admin/sessions',
+    passwords:     'admin/admin/passwords',
+    registrations: 'admin/admin/registrations'
   }
 
   devise_for :customers, controllers: {
-    sessions:      'customers/sessions',
-    passwords:     'customers/passwords',
-    registrations: 'customers/registrations'
+    sessions:      'public/customers/sessions',
+    passwords:     'public/customers/passwords',
+    registrations: 'public/customers/registrations'
   }
 
   #admins
@@ -75,7 +39,7 @@ Rails.application.routes.draw do
 
     resource :customers, only: [:show, :edit, :update]
     get 'customers/cancel' => 'customers#cansel'
-    patch 'customers/withdraw' => 'cusotmers#withdraw'
+    patch 'customers/withdraw' => 'customers#withdraw'
 
     resources :deliveries, except: [:new, :show]
   end
