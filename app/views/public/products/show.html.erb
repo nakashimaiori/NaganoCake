@@ -1,2 +1,20 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<%= render "public/products/genres_sideber" %>
+		</div>
+		<div class="col-xs-4">
+			<%= attachment_imade_tag(@product, :image, :fill, 600, 700) %>
+		</div>
+		<div class="col-xs-4">
+			<%= @product.name %>
+			<%= @product.detail %>
+			<h3>¥<%= @product.after_price %><span>(税込)</span></h3>
+		</div>
+
+		<div class="actions row">
+			<%= link_to "カートに入れる", public_about_path, class: "btn btn-primary col-xs-2" %>
+		</div>
+
+	</div>
+</div>
