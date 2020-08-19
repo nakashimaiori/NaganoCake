@@ -16,5 +16,13 @@
 			<%= link_to "カートに入れる", public_about_path, class: "btn btn-primary col-xs-2" %>
 		</div>
 
+<%= form_for @product do |product| %>
+	<%= product.name %>
+	<%= product.detail %>
+	<%= product.after_price %>
+	<%= f.select :qty %>
+	<%= f.submit "カートに入れる" class: "btn btn-primary col-xs-2"%>
+<% end %>
+
 	</div>
 </div>

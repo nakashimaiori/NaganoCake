@@ -10,4 +10,8 @@ class Public::ProductsController < ApplicationController
   	@genres = Genre.all
   end
 
+  def top
+  	@genres = Genre.all
+  end
+
 end
