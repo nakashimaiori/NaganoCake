@@ -1,0 +1,23 @@
+<h1>注文情報入力</h1>
+  <%= form_for(@order, url: new_public_order_path) do |f| %>
+
+		<h2>支払方法</h2>
+			<%= f.radio_button :how_pay, :credit_card, checked: true %>
+			<%= f.label :how_pay, "クレジットカード", {value: :credit_card, style: "display: inline-block;"} %><br>
+			<%= f.radio_button :how_pay, :bank_transfer %>
+			<%= f.label :how_pay, "銀行振込", {value: :bank_transfer, style: "display: inline-block;"} %>
+
+		<h2>お届け先</h2>
+			<%= f.radio_button :receive_address, :male, checked: true %>
+			<%= f.label :revers_postal_code, "ご自身の住所", {value: :male, style: "display: inline-block;"} %>
+
+			<%= f.radio_button :receive_address, :male　%>
+			<%= f.label :revers_postal_code, "登録済住所から選択", {value: :male, style: "display: inline-block;"} %>
+
+			<%= f.radio_button :receive_address, :male　%>
+			<%= f.label :revers_postal_code, "新しいお届け先", {value: :male, style: "display: inline-block;"} %>
+
+
+		<%= f.submit "確認画面へ進む" %>
+
+	<% end %>
