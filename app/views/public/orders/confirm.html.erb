@@ -1,0 +1,6 @@
+<%= form_for(@order) do |f| %>
+	<%= @order.how_pay %>
+	<%= @order.receive_postal_code %><%= @order.receive_address %>
+	<%= @order.receive_name %>
+	<%= f.submit "注文を確定する" %>
+<% end %>
