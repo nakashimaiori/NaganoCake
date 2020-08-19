@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   #customers
   namespace :public do
     get '/about' => 'products#about'
-    resources :product, only: [:index, :show]
+    resources :products, only: [:index, :show]
 
     resources :cart_items, except: [:new, :edit, :show]
     delete 'cart_items/detroy_all' => 'cart_items#destroy_all'

@@ -1,2 +1,42 @@
-<h1>Public::Products#index</h1>
-<p>Find me in app/views/public/products/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<%= render "public/products/genres_sideber" %>
+		</div>
+
+		<div class="col-xs-10">
+			<h2>商品一覧<span>(全 <%= @products.count %> 件)</span></h2>
+			<div id="products_box">
+				<% @products.each do |product| %>
+					<div class="product_block">
+						<div class="image_id"></div>
+						<%= product.name %>
+						<%= product.after_prace %>
+					</div>
+				<% end %>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+<style>
+	table thead tr th {
+		text-align: center
+	}
+	span {
+		font-size: large;
+	}
+	.product_block {
+		float: left;
+		width: 180px;
+		height: 200px;
+	}
+</style>
+
+
+
+
+
+
