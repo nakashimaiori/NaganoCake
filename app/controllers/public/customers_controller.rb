@@ -9,7 +9,7 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = Customer.find(current_customer.id)
-    @customer.update(customer: "退会済")
+    @customer.update(customer_status: "退会済")
     reset_session
     redirect_to root_path
   end

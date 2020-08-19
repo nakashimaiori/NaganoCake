@@ -17,7 +17,7 @@
         </nav>
         <nav>
           <% if customer_signed_in? %>
-            <li><%= link_to 'マイページ', root_path %></li>
+            <li><%= link_to 'マイページ', public_customers_path %></li>
             <li><%= link_to '商品一覧', '/public/products' %></li>
             <li><%= link_to 'カート', '/public/cart_items' %></li>
             <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
@@ -32,6 +32,7 @@
         </nav>
       </div>
     </header>
+      <%= render 'layouts/notifications' %>
     <%= yield %>
   </body>
 </html>
