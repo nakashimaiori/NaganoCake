@@ -37,9 +37,12 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
 
-    resource :customers, only: [:show, :edit, :update]
-    get 'customers/cancel' => 'customers#cansel'
-    patch 'customers/withdraw' => 'customers#withdraw'
+    resource :customers, only: [:show, :edit, :update] do
+      member do
+        get 'cancel'
+        patch 'withdraw'
+      end
+    end
 
     resources :deliveries, except: [:new, :show]
   end

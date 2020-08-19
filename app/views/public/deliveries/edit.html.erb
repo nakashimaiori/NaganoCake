@@ -1,0 +1,16 @@
+<h1>配送先編集</h1>
+
+<%= form_for(@delivery, url: public_delivery_path) do |f| %>
+  <table>
+  	<tr>
+  	  <td>配送先郵便番号<%= f.text_field :postal_code %></td>
+  	</tr>
+  	<tr>
+      <td>配送先住所<%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <td>宛名<%= f.text_field :name %></td>
+    </tr>
+  </table>
+  <%= f.submit '編集する' %>
+<% end %>

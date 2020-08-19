@@ -1,0 +1,35 @@
+  <h1>マイページ</h1>
+  <h3>登録情報</h3>
+
+  <%= link_to '編集する', '/customers/edit' %>
+  <%= link_to 'パスワードを変更する','/customers/password/edit' %>
+
+  <table class="table table-hover">
+    <tr>
+      <td><h5>氏名</h5></td>
+      <td><%= @customer.last_name %><%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <td><h5>カナ</h5></td>
+      <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+    </tr>
+    <tr>
+      <td><h5>郵便番号</h5></td>
+      <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <td><h5>住所</h5></td>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td><h5>電話番号</h5></td>
+      <td><%= @customer.phone_number %></td>
+    </tr>
+    <tr>
+      <td><h5>email</h5></td>
+      <td><%= @customer.email %></td>
+    </tr>
+  </table>
+
+  <%= link_to "配送先一覧", public_deliveries_path %>
+  <%= link_to "注文履歴一覧を見る", "" %>
