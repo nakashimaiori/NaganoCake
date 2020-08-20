@@ -3,26 +3,21 @@
 		<div class="col-xs-2">
 			<%= render "public/products/genres_sideber" %>
 		</div>
-		<div class="col-xs-4">
-			<%= attachment_imade_tag(@product, :image, :fill, 600, 700) %>
-		</div>
-		<div class="col-xs-4">
-			<%= @product.name %>
-			<%= @product.detail %>
-			<h3>¥<%= @product.after_price %><span>(税込)</span></h3>
-		</div>
 
-		<div class="actions row">
-			<%= link_to "カートに入れる", public_about_path, class: "btn btn-primary col-xs-2" %>
-		</div>
+		<%= form_for public_product_path, url: public_cart_item_path do |f| %>
+			<div class="col-xs-4">
+				<%= image_tag attachment_url(@product, :image, :fill, 300, 200, format: "jpg") %>
+			</div>
 
-<%= form_for @product do |product| %>
-	<%= product.name %>
-	<%= product.detail %>
-	<%= product.after_price %>
-	<%= f.select :qty %>
-	<%= f.submit "カートに入れる" class: "btn btn-primary col-xs-2"%>
-<% end %>
+			<div class="col-xs-6">
+				<div><%= @product.name %></div>
+				<div><%= @product.detail %></div>
+				<div><%= @product.before_price %></div>
+				<div><%= f.select :qty, [["1", 1],["2", 2],["3", 3]],{ include_blank: "個数選択"},{ id: "qty", class: "product_class" } %></div>
+				<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+			</div>
+		<% end %>
+
 
 	</div>
 </div>

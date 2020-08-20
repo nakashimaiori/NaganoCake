@@ -14,4 +14,9 @@ class Public::ProductsController < ApplicationController
   	@genres = Genre.all
   end
 
+  private
+  def product_params
+    params.require(:product).permit(:qty)
+  end
+
 end
