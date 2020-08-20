@@ -1,1 +1,42 @@
-pp
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<%= render "public/products/genres_sideber" %>
+		</div>
+		<div class="col-xs-10">
+
+			<div id="top_image">
+				<div id="top_message_box">
+					<div id="top_message">
+						<p>ようこそ、NaganoCakeへ！<br>
+							このサイトは、ケーキ販売のECサイトになります。<br>
+							会員でない方も商品の閲覧はできますが、<br>
+							購入には会員登録が必要になります。
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<style>
+	#top_image {
+		background-color: skyblue;
+		width: 80%;
+		height: 300px;
+		background-size: cover;
+  	background-position: center;
+	}
+	#top_message_box {
+	  width: 40%;
+	  height: 200px;
+	  background: rgba(0,0,0,0.5);
+	  padding: 50% auto;
+	  margin: 0 auto;
+	}
+	#top_message {
+	}
+</style>

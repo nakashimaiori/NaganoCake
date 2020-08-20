@@ -16,4 +16,10 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/}
   validates :email, presence: true
   validates :encrypted_password, presence: true
+
+  enum customer_status: { '有効': true, '退会済': false }
+
+  def active_for_authentication?
+    super && (self.customer_status == '有効')
+  end
 end
