@@ -1,2 +1,38 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h3>商品一覧</h3>
+    <div>
+      <%= link_to "+", new_admin_product_path, class: "btn btn-default btn-lg" %>
+    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= link_to product.name, admin_product_path(product.id) %></td>
+            <!-- .to_s(:delimited, delimiter: ',')で金額を三桁区切りで表示 -->
+            <td><%= product.before_price.to_s(:delimited, delimiter: ',') %></td>
+            <td><%= product.genre.name %></td>
+            <td>
+              <% if product.sale_status == true %>
+                <p>販売中</p>
+              <% else %>
+                <p>販売停止中</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @products %>
+  </div>
+</div>
