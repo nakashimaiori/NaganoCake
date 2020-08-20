@@ -1,2 +1,58 @@
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-2">
+
+    <%= form_for @product, url: admin_product_path do |f| %>
+
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= @product.errors.count %> error prohibited this obj from being saved:</h3>
+          <ul>
+            <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="col-xs-5">
+        <h3>商品編集</h3>
+        <div class="field row">
+          <%= f.attachment_field :image %>
+        </div>
+      </div>
+
+      <div class="col-xs-5">
+        <div class="field row">
+          <%= f.label :商品名 %>
+          <%= f.text_field :name, class: "col-xs-12" %>
+        </div>
+
+        <div class="field row">
+          <%= f.label :商品説明 %>
+          <%= f.text_area :detail, class: "col-xs-12" %>
+        </div>
+
+        <div class="field row">
+          <%= f.label :ジャンル %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "-- 選択してください --" %>
+        </div>
+
+        <div class="field row">
+          <%= f.label :税抜価格 %>
+          <%= f.text_field :before_price, class: "col-xs-12" %>
+        </div>
+
+        <div class="field row">
+          <%= f.label :販売ステータス %>
+          <%= f.select :sale_status, [["販売中", true], ["売切れ", false]] %>
+        </div>
+
+        <div class="field row">
+            <%= f.submit '変更を保存', class: "btn btn-primary"%>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
