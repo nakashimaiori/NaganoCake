@@ -1,2 +1,2 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h3>管理者画面</h3>
+  <h2>本日の注文件数&emsp;&emsp;&emsp;&emsp;<%= link_to @orders.count, admin_orders_path(day: 1) %>件</h2>

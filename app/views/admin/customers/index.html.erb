@@ -13,10 +13,16 @@
         <tr>
           <td><%= customer.id %></td>
           <!--文長いので簡略できるよう後日修正  -->
-          <th><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %></th>
+          <th><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id) %></th>
           <!-- -->
           <th><%= customer.email %></th>
-          <th><%= customer.customer_status %></th>
+          <th>
+            <% if customer.customer_status == true %>
+              <%= "有効" %>
+            <% else %>
+              <%= "退会済" %>
+            <% end %>
+          </th>
         </tr>
       <% end %>
     </tbody>
