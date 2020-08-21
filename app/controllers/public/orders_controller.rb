@@ -4,27 +4,33 @@ class Public::OrdersController < ApplicationController
 	end
 
 	def show
-		@order = 1
+		@order = Order.find(params[:id])
 	end
 
 	def new
 		@order = Order.new
+		@customer = current_customer
 	end
 
 	def confirm
-	  @order = Order.new(order_params)
-	  render :new if @order.invalid?
+		@customer = current_customer
+    @order = Order.new(order_params)
 	end
 
   def create
+  	@customer = current_customer
   	@order = Order.new(order_params)
 		@order.save
 		redirect_to public_orders_complete_path
   end
 
+  def complete
+  end
+
 	private
 	def order_params
-		params.require(:order).permit(:receive_postal_code, :receive_address, :receive_name, :how_pay, :total_amoun, :postage)
+		params.require(:order).permit(:receive_postal_code, :receive_address, :receive_name, :how_pay)
+		# :total_amoun, :postageは後で追加する
 	end
 
 end
