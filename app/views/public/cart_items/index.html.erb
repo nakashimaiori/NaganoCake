@@ -2,7 +2,7 @@
 
   <h1>ショッピングカート</h1>
   <table>
-	  <caption><%= link_to 'カートを空にする', "" %></caption>
+	  <caption><%=link_to 'カートを空にする', destroy_all_public_cart_items_path, method: :delete %></caption>
 	  <thead>
 		  <tr>
 			  <th>商品名</th>
@@ -17,15 +17,8 @@
 		  	<% @customer.cart_items.each do |cart_item| %>
 			  <td><%= cart_item.product.name %></td>
 			  <td><%= cart_item.product.before_price %>円</td>
-			                                               <!-- 横並びのclass↓ -->
-			  <td><%= form_for public_cart_items_path , html: {class:"form-inline"} do |f| %>
-					<div class="">
-					  <%= f.select :count,(1..30).to_a, {}, class: "form-control" %>
-					  <%= f.submit "変更" %>
-					</div>
-					<% end %>
-			  </td>
-			  <td><%=link_to '削除する', public_cart_item_path(cart_item.id), method: :delete %></td>
+			  <td><%= cart_item.item_qty %></td>
+			  <td><%= link_to '削除する', public_cart_item_path(cart_item.id), method: :delete %></td>
 		  </tr>
 		    <% end %>
 	  </tbody>

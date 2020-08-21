@@ -30,8 +30,11 @@ Rails.application.routes.draw do
     get '/about' => 'products#about'
     resources :products, only: [:index, :show]
 
-    resources :cart_items, except: [:new, :edit, :show]
-    delete 'cart_items/detroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, except: [:new, :edit, :show] do
+      collection do
+      delete 'destroy_all'
+      end
+    end
 
     resources :orders, except: [:edit, :destroy]
     post 'orders/confirm' => 'orders#confirm'
