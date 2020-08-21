@@ -1,10 +1,11 @@
 
 
-  <h1>ショッピングカート</h1>
+  <h1>Shopping Cart <i class="fas fa-cart-arrow-down"></i></h1>
   <table>
 	  <caption><%=link_to 'カートを空にする', destroy_all_public_cart_items_path, method: :delete %></caption>
 	  <thead>
 		  <tr>
+		  	  <th></th>
 			  <th>商品名</th>
 			  <th>単価(税込)</th>
 			  <th>数量</th>
@@ -14,11 +15,29 @@
 	  </thead>
 	  <tbody>
 		  <tr>
+		  	<% @sum = 0 %>
+		  	<% @subtotal = 0 %>
 		  	<% @customer.cart_items.each do |cart_item| %>
+		  	  <td>
+		  	  	<%= link_to public_product_path(cart_item.product) do %>
+        <%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no_img.jpg") %>
+        <% end %>
+               </td>
 			  <td><%= cart_item.product.name %></td>
 			  <td><%= cart_item.product.before_price %>円</td>
-			  <td><%= cart_item.item_qty %></td>
-			  <td><%= link_to '削除する', public_cart_item_path(cart_item.id), method: :delete %></td>
+			  <td>
+			    <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), local: true do |f| %>
+                  <%= f.number_field :item_qty, value: cart_item.item_qty, min:1, max:99  %>
+                  <%= f.submit "変更", class: "btn btn-primary" %>
+                <% end %>
+              </td>
+			  <td><%= @subtotal = cart_item.product.before_price * cart_item.item_qty %>円</td>
+			    <% @sum += @subtotal %>
+			  <td>
+			  	<%= link_to public_cart_item_path(cart_item.id), method: :delete do %>
+			  	  <i class="far fa-trash-alt"></i>
+			  	<% end %>
+			  </td>
 		  </tr>
 		    <% end %>
 	  </tbody>
@@ -26,8 +45,8 @@
 
   <table>
     <tr>
-      <td>合計金額</td>
-      <td>     円</td>
+      <td><strong>合計金額</strong></td>
+      <td><%= @sum %>円</td>
     </tr>
   </table>
 
