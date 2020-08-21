@@ -1,2 +1,29 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
+<div class="container">
+	<div class="row">
+
+		<div class="col-xs-2">
+			<%= render "public/products/genres_sideber" %>
+		</div>
+
+		<%= form_for(@cart_item, url: public_cart_items_path) do |f| %>
+
+			<div class="col-xs-4">
+				<%= image_tag attachment_url(@product, :image, :fill, 300, 200, format: "jpg") %>
+			</div>
+
+			<div class="col-xs-6">
+				<div><%= @product.name %></div>
+				<div><%= @product.detail %></div>
+				<div>¥<%= @product.before_price %></div>
+
+				<%= f.hidden_field :product_id, :value => @product.id %>
+
+				<div><%= f.select :item_qty, [["1", 1],["2", 2],["3", 3]],{ include_blank: "個数選択"},{ id: "imte_qty", class: "cart_item_class" } %></div>
+				<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+			</div>
+
+		<% end %>
+
+
+	</div>
+</div>

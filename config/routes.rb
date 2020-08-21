@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   #customers
   namespace :public do
     get '/about' => 'products#about'
-    resources :product, only: [:index, :show]
+    resources :products, only: [:index, :show]
 
     resources :cart_items, except: [:new, :edit, :show]
     delete 'cart_items/detroy_all' => 'cart_items#destroy_all'
@@ -37,9 +37,12 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
 
-    resource :customers, only: [:show, :edit, :update]
-    get 'customers/cancel' => 'customers#cansel'
-    patch 'customers/withdraw' => 'customers#withdraw'
+    resource :customers, only: [:show, :edit, :update] do
+      member do
+        get 'cancel'
+        patch 'withdraw'
+      end
+    end
 
     resources :deliveries, except: [:new, :show]
   end
