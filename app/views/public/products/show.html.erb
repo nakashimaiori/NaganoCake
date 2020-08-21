@@ -5,6 +5,12 @@
 			<%= render "public/products/genres_sideber" %>
 		</div>
 
+		<div class="flashmessage">
+			<% if flash[:notice] %>
+    　　　　　<p class="notice"></p>
+　　　　　	<% end %>
+        </div>
+
 		<%= form_for(@cart_item, url: public_cart_items_path) do |f| %>
 
 			<div class="col-xs-4">
