@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
 
 	def confirm
 		@customer = current_customer
+		@cart_item = current_customer.cart_items
     @order = Order.new(order_params)
 	end
 
