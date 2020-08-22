@@ -9,13 +9,21 @@ class Public::CartItemsController < ApplicationController
   def create
     @customer = current_customer
     @cart_item = @customer.cart_items.new(cart_item_params)
-    # if
+    # 以前に追加した商品の情報(すでにカートにある商品)↓
+    @now_cart_item = current_customer.cart_items.find_by(product_id: @cart_item.product_id)
+    if @now_cart_item
+       @now_cart_item.item_qty += @cart_item.item_qty
+        # 数量をさらにupdate
+       @now_cart_item.update(item_qty: @now_cart_item.item_qty)
+       redirect_to public_cart_items_path
+    else
       if @cart_item.save
-         redirect_to public_cart_items_path
+          redirect_to public_cart_items_path
       else
-        flash[:notice] = "カートに入れる個数を入力してください"
-        redirect_back(fallback_location: root_path)
+          flash[:notice] = "カートに入れる個数を入力してください"
+          redirect_back(fallback_location: root_path)
       end
+    end
   end
 
   def update
