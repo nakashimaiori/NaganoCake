@@ -4,6 +4,9 @@
 			<%= render "public/products/genres_sideber" %>
 		</div>
 		<div class="col-xs-10">
+			<% if flash[:notice] %>
+    　　　　　<p class="notice"></p>
+            <% end %>
 
 			<div id="top_image">
 				<div id="top_message_box">
