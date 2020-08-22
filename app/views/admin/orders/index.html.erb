@@ -1,2 +1,30 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h3>注文履歴一覧</h3>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <!-- タイムゾーンの設定がデフォルトでUTCになっているのでconfig/application.rbにconfig.time_zone = 'Tokyo'を追記。
+              config/initializers/time_formats.rbを作成し、表示方法を記述。created_at.to_s(:datatime_jp)で表示する -->
+            <td><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order) %></td>
+            <td><%= order.receive_name %></td>
+            <!-- total_qtyメソッドをorderモデルで定義　注文個数の合計を算出 -->
+            <td><%= order.total_qty %></td>
+            <td><%= order.order_status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <%= paginate @orders %>
+  </div>
+</div>
