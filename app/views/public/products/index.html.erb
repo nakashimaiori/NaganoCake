@@ -13,7 +13,7 @@
 
 						<div><%= image_tag attachment_url(product, :image, :fill, 150, 100, format: "jpg") %></div>
 						<div><%= product.name %></div>
-						<div>¥<%= product.before_price.to_s(:delimited, delimiter: ',') %></div>
+						<div>¥<%= product.tax_price.to_s(:delimited, delimiter: ',') %></div>
 					</div>
 				<% end %>
 				<% end %>
