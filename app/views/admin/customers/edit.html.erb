@@ -1,2 +1,48 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h3><%= @customer.last_name+@customer.first_name %>さんの会員情報編集</h3>
+ <th>会員ID</th>
+      <th><%= @customer.id %></th>
+<%= form_for(@customer, url: admin_customer_path) do |f| %>
+  <div class="field">
+    <%= f.label :氏名 %>
+    <%= f.text_field :last_name, class: "last_name" %>
+    <%= f.text_field :first_name, class: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :フリガナ %>
+    <%= f.text_field :last_name_kana, class: "last_name_kana" %>
+    <%= f.text_field :first_name_kana, class: "first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :郵便番号 %>
+    <%= f.text_field :postal_code, class: "postal_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, class: "address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :電話番号 %>
+    <%= f.text_field :phone_number, class: "phone_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email, class: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :会員ステータス %>
+    <%= f.radio_button :customer_status, true, checked: true, class: "customer_status" %>
+    <%= f.label :有効 %>
+    <%= f.radio_button :customer_status, false, class: "customer_status" %>
+    <%= f.label :退会済み %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "変更を保存する" %>
+  </div>
+<% end %>
