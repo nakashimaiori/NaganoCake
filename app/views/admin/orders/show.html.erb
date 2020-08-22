@@ -28,6 +28,8 @@
       </tbody>
     </table>
 
+  </div>
+  <div class="col-xs-6 col-xs-offset-2">
     <table class="table">
       <thead>
         <tr>
@@ -44,15 +46,38 @@
             <td><%= order_item.product.name %></td>
             <td><%= order_item.after_price.to_s(:delimited, delimiter: ',') %></td>
             <td><%= order_item.qty %></td>
+            <!-- 小計を出すためにsubtotalメソッドをorder_itemモデルに定義して呼び出し -->
             <td><%= order_item.subtotal.to_s(:delimited, delimiter: ',') %></td>
             <td>
-              <%= form_for order_item, url: admin_order_item_path do |f| %>
+              <%= form_for order_item, url: admin_order_item_path(order_item) do |f| %>
                 <%= f.select :made_status,["着手不可", "製作待ち", "製作中", "製作完了"] %>
                 <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
               <% end %>
             </td>
           </tr>
         <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-xs-2">
+    <table>
+      <tbody>
+        <tr>
+          <td>商品合計</td>
+          <!-- 商品合計を出すためにsumメソッドをorderモデルに定義
+          各order_itemの小計（subtotal）をeachを使って足し、商品合計を算出 -->
+          <td><%= @order.sum.to_s(:delimited, delimiter: ',') %>円</td>
+        </tr>
+        <tr>
+          <td>送料</td>
+          <td><%= @order.postage %>円</td>
+        </tr>
+        <tr>
+          <td>請求金額合計</td>
+          <!-- 商品合計と送料の合計＝請求金額合計 -->
+          <td><%= (@order.sum + @order.postage).to_s(:delimited, delimiter: ',') %>円</td>
+        </tr>
       </tbody>
     </table>
   </div>

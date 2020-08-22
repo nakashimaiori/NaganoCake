@@ -18,12 +18,13 @@
               config/initializers/time_formats.rbを作成し、表示方法を記述。created_at.to_s(:datatime_jp)で表示する -->
             <td><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order) %></td>
             <td><%= order.receive_name %></td>
-            <td><%= order.total_amount %></td>
+            <!-- total_qtyメソッドをorderモデルで定義　注文個数の合計を算出 -->
+            <td><%= order.total_qty %></td>
             <td><%= order.order_status %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-      <%= paginate @orders %>
+    <%= paginate @orders %>
   </div>
 </div>
