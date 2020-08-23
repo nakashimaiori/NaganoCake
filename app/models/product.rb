@@ -16,10 +16,17 @@ class Product < ApplicationRecord
   validates :sale_status, inclusion: {in: [true, false]}
 
 
+    TAX = 1.1
+
     def tax_price
-      tax = 1.1
-      tax_price = before_price * tax
+      tax_price = before_price * TAX
       tax_price.round
     end
 
 end
+
+# def tax_price
+      # tax = 1.1
+      # tax_price = before_price * tax
+      # tax_price.round
+    # end
