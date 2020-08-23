@@ -1,6 +1,8 @@
-
-
-  <h1>Shopping Cart <i class="fas fa-cart-arrow-down"></i></h1>
+<div class="container">
+  <div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
+    <h1>Shopping Cart <i class="fas fa-cart-arrow-down"></i></h1>
 
     <% if @cart_items.count == 0 %>
       <p>カートに商品がありません。</p>
@@ -8,7 +10,7 @@
     <% else %>
   <table class="table table-hover">
 	  <caption>
-	  	<button type="button" class="btn btn-outline-secondary">
+	  	<button type="button" class="btn btn-outline-success">
 	  	  <%=link_to 'カートを空にする', destroy_all_public_cart_items_path, method: :delete %>
 	  	</button>
 	    <button type="button" class="btn btn-outline-secondary"><%= link_to '買い物を続ける', root_path %></button>
@@ -58,13 +60,16 @@
 
   <table class="table table-hover">
     <tr>
-      <td class="col-xs-7"></td>
+      <td class="col-xs-6"></td>
       <td class="col-xs-1"><strong>商品計</strong></td>
       <td class="col-xs-1"><%= @num %>点</td>
-      <td class="col-xs-1"><strong>合計金額</strong></td>
-      <td class="col-xs-1"><%= @sum %>円</td>
+      <td class="col-xs-3"><strong>合計金額　</strong><%= @sum %>円</td>
       <td class="col-xs-1"><button type="button" class="btn btn-outline-secondary"><%= link_to '購入手続きへ', new_public_order_path %></button></td>
     </tr>
   </table>
   <% end %>
+    </div>
+  <div class="col-xs-1"></div>
+  <div class="row">
+</div>
 
