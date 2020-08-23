@@ -36,9 +36,9 @@
 
   <div class="field">
     <%= f.label :会員ステータス %>
-    <%= f.radio_button :customer_status, true, checked: true, class: "customer_status" %>
+    <%= f.radio_button :customer_status, :有効, class: "customer_status" %>
     <%= f.label :有効 %>
-    <%= f.radio_button :customer_status, false, class: "customer_status" %>
+    <%= f.radio_button :customer_status, :退会済, class: "customer_status" %>
     <%= f.label :退会済み %>
   </div>
 
