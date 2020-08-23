@@ -1,11 +1,12 @@
 class Public::OrdersController < ApplicationController
-	def index
-		@orders = Order.where(current_customer)
-	end
+  def index
+    @orders = Order.all
+  end
 
-	def show
-		@order = Order.find(params[:id])
-	end
+  def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
+
 
 	def new
   	@customer = current_customer
