@@ -35,8 +35,8 @@ class Public::OrdersController < ApplicationController
 	end
 
   def create
-  	@customer = current_customer
   	@order = Order.new(order_params)
+  	@customer = current_customer
 	@order.save
 	redirect_to public_orders_complete_path
   end
@@ -46,6 +46,7 @@ class Public::OrdersController < ApplicationController
 
 	private
 	def order_params
+		# binding.pry
 		params.require(:order).permit(:receive_postal_code, :receive_address, :receive_name, :how_pay, :postage, :total_amount)
 	end
 
