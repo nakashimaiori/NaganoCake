@@ -1,4 +1,6 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @orders = Order.page(params[:page]).per(10)
   end
@@ -13,15 +15,12 @@ class Admin::OrdersController < ApplicationController
     @order_items = @order.order_items
     @order.update(order_params)
 
-      #　publicとマージしてから確認！
-
       #入金待ちのときは製作ステータスに着手不可が入る
       #入金確認のとき製作ステータスを全て”製作待ち”に更新
 
       if @order.order_status == "入金待ち"
         @order_items.update_all(made_status: "着手不可")
-      else
-        @order.order_status == "入金確認"
+      elsif @order.order_status == "入金確認"
         @order_items.update_all(made_status: "製作待ち")
       end
 

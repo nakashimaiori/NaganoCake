@@ -65,9 +65,9 @@
       <tbody>
         <tr>
           <td>商品合計</td>
-          <!-- 商品合計を出すためにsumメソッドをorderモデルに定義
+          <!-- 商品合計を出すためにtotal_priceメソッドをorderモデルに定義
           各order_itemの小計（subtotal）をeachを使って足し、商品合計を算出 -->
-          <td><%= @order.sum.to_s(:delimited, delimiter: ',') %>円</td>
+          <td><%= @order.total_price.to_s(:delimited, delimiter: ',') %>円</td>
         </tr>
         <tr>
           <td>送料</td>
@@ -76,7 +76,7 @@
         <tr>
           <td>請求金額合計</td>
           <!-- 商品合計と送料の合計＝請求金額合計 -->
-          <td><%= (@order.sum + @order.postage).to_s(:delimited, delimiter: ',') %>円</td>
+          <td><%= (@order.total_price + @order.postage).to_s(:delimited, delimiter: ',') %>円</td>
         </tr>
       </tbody>
     </table>

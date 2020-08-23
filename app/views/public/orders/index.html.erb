@@ -27,7 +27,7 @@
                 <%= order_item.product.name %><br>
               <% end%>
             </td>
-            <td><%= (order.sum + order.postage).to_s(:delimited, delimiter: ',') %>円</td>
+            <td><%= (order.total_price + order.postage).to_s(:delimited, delimiter: ',') %>円</td>
             <td><%= order.order_status %></td>
             <td><%= link_to '表示する', public_order_path(order.id), class: "btn btn-primary" %></td>
           </tr>
