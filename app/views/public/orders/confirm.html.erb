@@ -43,8 +43,12 @@
   <div>
 	  <h2>支払方法</h2><%= @order.how_pay %>
 	</div>
-	<%= @order.receive_postal_code %><%= @order.receive_address %>
-	<%= @order.receive_name %>
+
+	<div>
+		<h2>お届け先</h2>
+		<%= @order.receive_postal_code %><%= @order.receive_address %>
+		<%= @order.receive_name %>
+	</div>
 
 	<%= f.hidden_field :how_pay, :value => @order.how_pay %>
 	<%= f.hidden_field :receive_postal_code, :value => @order.receive_postal_code %>
@@ -55,3 +59,8 @@
 
 	<%= f.submit "注文を確定する" %>
 <% end %>
+
+
+
+
+

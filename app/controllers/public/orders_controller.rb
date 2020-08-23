@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+  end
 
 
 	def new
@@ -15,7 +16,6 @@ class Public::OrdersController < ApplicationController
 	end
 
 	def confirm
-		# binding.pry
 		@customer = current_customer
 		@cart_item = current_customer.cart_items
 		@order = Order.new(order_params)
@@ -38,14 +38,15 @@ class Public::OrdersController < ApplicationController
   def create
   	@order = Order.new(order_params)
   	@customer = current_customer
-	@order.save
-	redirect_to public_orders_complete_path
+		@order.save
+		redirect_to public_orders_path
   end
 
   def complete
   end
 
 	private
+
 	def order_params
 		# binding.pry
 		params.require(:order).permit(:receive_postal_code, :receive_address, :receive_name, :how_pay, :postage, :total_amount)
