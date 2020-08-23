@@ -1,6 +1,6 @@
 <div class="container">
 <h1>注文情報入力</h1>
-  <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
+ <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 
 		<h2>支払方法</h2>
 		<div>
@@ -15,40 +15,39 @@
 
 		<h2>お届け先</h2>
 
-
 		<div class="customer_address">
 			<%= f.radio_button :abc, :a, checked: true %>
-			<%= f.label :a, "ご自身の住所", {value: :a, style: "display: inline-block;"} %>
+			<%= f.label :abc, "ご自身の住所", {value: :a, style: "display: inline-block;"} %>
 			<div><%= @customer.postal_code %><br><%= @customer.address %><br><%= @customer.last_name %><%= @customer.first_name %></div>
 		</div>
 
 
 		<div class="derivery_address">
 			<%= f.radio_button :abc, :b %>
-			<%= f.label :b, "登録済住所から選択", {value: :b, style: "display: inline-block;"} %>
+			<%= f.label :abc, "登録済住所から選択", {value: :b, style: "display: inline-block;"} %>
 			<div>
-        <%= f.collection_select :delivery_id, Delivery.all, :id, :full_address, include_blank: "選択してください" %>
+        <%= collection_select(:select_delivery, :id, @deliveries, :id, :full_address) %>
 			</div>
 		</div>
 
 
 		<div class="new_address">
 			<%= f.radio_button :abc, :c %>
-			<%= f.label :c, "新しいお届け先", {value: :c, style: "display: inline-block;"} %>
+			<%= f.label :abc, "新しいお届け先", {value: :c, style: "display: inline-block;"} %>
 
 			<div class="field">
-		    <%= f.label :receive_postal_code, "郵便番号（ハイフンなし）" %>
-		    <%= f.text_field :receive_postal_code, autofocus: true %>
+		    <%= f.label :new_postal_code, "郵便番号（ハイフンなし）" %>
+		    <%= f.text_field :new_postal_code, autofocus: true %>
 		  </div>
 
 		  <div class="field">
-		    <%= f.label :receive_address, "住所　　　　　　　　　　" %>
-		    <%= f.text_field :receive_address, autofocus: true %>
+		    <%= f.label :new_address, "住所　　　　　　　　　　" %>
+		    <%= f.text_field :new_address, autofocus: true %>
 		  </div>
 
 		  <div class="field">
-		    <%= f.label :receive_name, "宛名　　　　　　　　　　" %>
-		    <%= f.text_field :receive_name, autofocus: true %>
+		    <%= f.label :new_name, "宛名　　　　　　　　　　" %>
+		    <%= f.text_field :new_name, autofocus: true %>
 		  </div>
 		</div>
 

@@ -10,8 +10,8 @@
 		  </tr>
 	  </thead>
 	  <tbody>
-		  	<% @sum = 0 %>
-		  	<% @subtotal = 0 %>
+		  <% @sum = 0 %>
+		  <% @subtotal = 0 %>
 	  	<% @customer.cart_items.each do |cart_item| %>
 		  	<tr>
 		  	  <td><%= attachment_image_tag(cart_item.product, :image, :fill, 50, 50, fallback: "no_img.jpg") %></td>
@@ -45,5 +45,10 @@
 	</div>
 	<%= @order.receive_postal_code %><%= @order.receive_address %>
 	<%= @order.receive_name %>
+	<% f.hidden_field :how_pay, :value => @order.how_pay %>
+	<% f.hidden_field :receive_postal_code, :value => @order.receive_postal_code %>
+	<% f.hidden_field :receive_address, :value => @order.receive_address %>
+	<% f.hidden_field :receive_name, :value => @order.receive_name %>
+	<% f.hidden_field :postage, :value => @order.postage %>
 	<%= f.submit "注文を確定する" %>
 <% end %>
