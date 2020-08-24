@@ -1,24 +1,24 @@
 <div class="row">
 
   <div class="col-xs-8 col-xs-offset-2 top">
-    <h1>New Product <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="font-size:30px;"></span></h1>
+    <h1>New Product</h1>
   </div>
 
   <div class="col-xs-8 col-xs-offset-2">
+
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= @product.errors.count %> error prohibited this obj from being saved:</h3>
+        <ul>
+          <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div class="form-horizontal" role="form">
-
       <%= form_for @product, url: admin_products_path do |f| %>
-
-        <% if @product.errors.any? %>
-          <div id="error_explanation">
-            <h3><%= @product.errors.count %> error prohibited this obj from being saved:</h3>
-            <ul>
-              <% @product.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
 
         <div class="col-xs-6">
           <div class="form-group">
