@@ -36,9 +36,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :orders, except: [:edit, :destroy]
-    post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
+    post 'orders/confirm' => 'orders#confirm'
+    resources :orders, except: [:edit, :destroy]
 
     resources :deliveries, except: [:new, :show]
 
