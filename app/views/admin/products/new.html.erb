@@ -1,60 +1,78 @@
 <div class="row">
+
+  <div class="col-xs-8 col-xs-offset-2 top">
+    <h1>New Product <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="font-size:30px;"></span></h1>
+  </div>
+
   <div class="col-xs-8 col-xs-offset-2">
+    <div class="form-horizontal" role="form">
 
-    <%= form_for @product, url: admin_products_path do |f| %>
+      <%= form_for @product, url: admin_products_path do |f| %>
 
-      <% if @product.errors.any? %>
-        <div id="error_explanation">
-          <h3><%= @product.errors.count %> error prohibited this obj from being saved:</h3>
-          <ul>
-            <% @product.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
+        <% if @product.errors.any? %>
+          <div id="error_explanation">
+            <h3><%= @product.errors.count %> error prohibited this obj from being saved:</h3>
+            <ul>
+              <% @product.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="col-xs-5">
+          <div class="form-group">
+            <%= f.attachment_field :image %>
+          </div>
+          <!-- <div>
+            商品登録時のイメージ画像を表示(余裕があれば)
+          </div> -->
         </div>
+
+        <div class="col-xs-5">
+          <div class="form-group">
+            <%= f.label :商品名, class: "col-xs-4" %>
+            <div class="col-xs-8">
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :商品説明, class: "col-xs-4" %>
+            <div class="col-xs-8">
+              <%= f.text_area :detail, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :ジャンル, class: "col-xs-4" %>
+            <div class="col-xs-8">
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, {}, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :税抜価格, class: "col-xs-4" %>
+            <div class="col-xs-8">
+              <%= f.text_field :before_price, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :販売ステータス, class: "col-xs-4" %>
+            <div class="col-xs-8">
+              <%= f.select :sale_status, [["販売中", true], ["売切れ", false]], {}, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="pull-right">
+          <div class="form-group">
+            <%= f.submit '新規登録', class: "btn btn-lg btn-pos" %>
+          </div>
+        </div>
+
       <% end %>
-
-      <div class="col-xs-5">
-        <h3>商品新規登録</h3>
-        <div class="field row">
-          <%= f.attachment_field :image %>
-        </div>
-        <!-- <div>
-          商品登録時のイメージ画像を表示(余裕があれば)
-        </div> -->
-      </div>
-
-      <div class="col-xs-5">
-        <div class="field row">
-          <%= f.label :商品名 %>
-          <%= f.text_field :name, class: "col-xs-12" %>
-        </div>
-
-        <div class="field row">
-          <%= f.label :商品説明 %>
-          <%= f.text_area :detail, class: "col-xs-12" %>
-        </div>
-
-        <div class="field row">
-          <%= f.label :ジャンル %>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "-- 選択してください --" %>
-        </div>
-
-        <div class="field row">
-          <%= f.label :税抜価格 %>
-          <%= f.text_field :before_price, class: "col-xs-12" %>
-        </div>
-
-        <div class="field row">
-          <%= f.label :販売ステータス %>
-          <%= f.select :sale_status, [["販売中", true], ["売切れ", false]] %>
-        </div>
-
-        <div class="actions row">
-          <%= f.submit '新規登録', class: "btn-lg btn-primary col-xs-4" %>
-        </div>
-      </div>
-
-    <% end %>
+    </div>
   </div>
 </div>
