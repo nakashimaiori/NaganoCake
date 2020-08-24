@@ -22,6 +22,7 @@
 
         <div class="col-xs-6">
           <div class="form-group">
+            <%= attachment_image_tag @product, :image, :fill, 350, 300 %>
             <%= f.attachment_field :image %>
           </div>
         </div>
