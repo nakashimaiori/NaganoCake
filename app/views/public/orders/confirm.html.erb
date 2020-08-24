@@ -1,0 +1,71 @@
+<%= form_with(model: @order, local: true, url: {action: 'create'}) do |f| %>
+	<!-- 購入商品 -->
+  <table class="table table-bordered">
+	  <thead>
+		  <tr>
+		  	<th></th>
+			  <th>商品名</th>
+			  <th>単価(税込)</th>
+			  <th>数量</th>
+			  <th>小計</th>
+		  </tr>
+	  </thead>
+	  <tbody>
+		  <% @sum = 0 %>
+			<% @subtotal = 0 %>
+	  	<% @customer.cart_items.each do |cart_item| %>
+		  	<tr>
+		  	  <td><%= attachment_image_tag(cart_item.product, :image, :fill, 50, 50, fallback: "no_img.jpg") %></td>
+			  	<td><%= cart_item.product.name %></td>
+			  	<td><%= cart_item.product.tax_price %>円</td>
+			  	<td><%= cart_item.item_qty %></td>
+			  	<td><%= @subtotal = cart_item.product.tax_price * cart_item.item_qty %>円</td>
+			    <% @sum += @subtotal %>
+			  </tr>
+	    <% end %>
+	  </tbody>
+  </table>
+
+  <!-- 請求金額 -->
+  <table class="table table-bordered">
+  	<tr>
+  		<td>送料</td>
+  		<td><%= @order.postage %></td>
+  	</tr>
+  	<tr>
+  		<td>商品合計</td>
+  		<td><%= @sum %></td>
+  	</tr>
+  	<tr>
+  		<td>請求金額</td>
+  		<td><%= @sum + @order.postage %></td>
+  	</tr>
+  </table>
+
+  <!-- 支払方法 -->
+  <div>
+	  <h2>支払方法</h2><%= @order.how_pay %>
+	</div>
+
+	<!-- お届け先 -->
+	<div>
+		<h2>お届け先</h2>
+		<%= @order.receive_postal_code %><%= @order.receive_address %>
+		<%= @order.receive_name %>
+	</div>
+
+
+	<%= f.hidden_field :how_pay, :value => @order.how_pay.to_i %>
+	<%= f.hidden_field :receive_postal_code, :value => @order.receive_postal_code %>
+	<%= f.hidden_field :receive_address, :value => @order.receive_address %>
+	<%= f.hidden_field :receive_name, :value => @order.receive_name %>
+	<%= f.hidden_field :postage, :value => @order.postage %>
+	<%= f.hidden_field :total_amount, :value => @sum + @order.postage %>
+
+	<%= f.submit "注文を確定する" %>
+<% end %>
+
+
+
+
+
