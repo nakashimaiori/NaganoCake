@@ -3,7 +3,7 @@
   	<tr>
   	  <th>顧客ID</th>
   	  <th><%= @customer.id %>
-  	    <% if @customer.customer_status == true %>
+  	    <% if @customer.customer_status == '有効' %>
           <%= "有効会員" %>
         <% else %>
           <%= "退会済み" %>

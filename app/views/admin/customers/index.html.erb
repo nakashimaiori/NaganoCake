@@ -17,11 +17,7 @@
           <!-- -->
           <th><%= customer.email %></th>
           <th>
-            <% if customer.customer_status == true %>
-              <%= "有効" %>
-            <% else %>
-              <%= "退会済" %>
-            <% end %>
+            <%= customer.customer_status %>
           </th>
         </tr>
       <% end %>
