@@ -1,10 +1,10 @@
 class Admin::OrderItemsController < ApplicationController
+  before_action :authenticate_admin!
+
   def update
     @order_item = OrderItem.find(params[:id])
     @order = @order_item.order  #注文ステータスを更新するため、ordersテーブル呼び出し
     @order_item.update(order_item_params)
-
-    #　publicとマージしてから確認！
 
       #製作ステータスの状態によって条件分岐
 
