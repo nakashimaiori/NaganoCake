@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
     get 'orders/complete' => 'orders#complete'
     post 'orders/confirm' => 'orders#confirm'
+    get 'orders/confirm' => 'orders#new'
     resources :orders, except: [:edit, :destroy]
 
     resources :deliveries, except: [:new, :show]

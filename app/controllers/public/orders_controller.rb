@@ -19,19 +19,29 @@ class Public::OrdersController < ApplicationController
 		@customer = current_customer
 		@cart_item = current_customer.cart_items
 		@order = Order.new(order_params)
+		# 「ご自身の住所」を選択した場合
 		if params[:order][:select_address] == "customer_address"
 			@order.receive_postal_code = @customer.postal_code
 			@order.receive_address = @customer.address
 			@order.receive_name = @customer.last_name + @customer.first_name
+		# 「登録済住所から選択」を選択した場合
 		elsif params[:order][:select_address] == "deliverey_address"
 			@delivery = Delivery.find(params[:select_delivery][:id])
 			@order.receive_postal_code = @delivery.postal_code
 			@order.receive_address = @delivery.address
 			@order.receive_name = @delivery.name
+		# 「新しいお届け先」を選択した場合
 		elsif params[:order][:select_address] == "new_deliverey_address"
-			@order.receive_postal_code = params[:order][:new_postal_code]
-			@order.receive_address = params[:order][:new_address]
-			@order.receive_name = params[:order][:new_name]
+			@delivery = Delivery.new
+			@delivery.postal_code = params[:order][:new_postal_code]
+			@delivery.address = params[:order][:new_address]
+			@delivery.name = params[:order][:new_name]
+			@delivery.customer_id = current_customer.id
+			@delivery.save
+
+			@order.receive_postal_code = @delivery.postal_code
+			@order.receive_address = @delivery.address
+			@order.receive_name = @delivery.name
 		end
 	end
 
@@ -47,13 +57,11 @@ class Public::OrdersController < ApplicationController
 		  @order_item.product_id = cart_item.product_id
 		  @order_item.qty = cart_item.item_qty
 		  @order_item.after_price = cart_item.product.tax_price
-
 		  @order_item.save
 		end
 
-	current_customer.cart_items.destroy_all
-	redirect_to public_orders_complete_path
-
+		current_customer.cart_items.destroy_all
+		redirect_to public_orders_complete_path
   end
 
   def complete
@@ -64,6 +72,5 @@ class Public::OrdersController < ApplicationController
 	def order_params
 		params.require(:order).permit(:receive_postal_code, :receive_address, :receive_name, :how_pay, :postage, :total_amount)
 	end
-
 
 end
