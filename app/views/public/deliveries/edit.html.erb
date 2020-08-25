@@ -1,16 +1,33 @@
-<h1>配送先編集</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1">
+    </div>
+    <div class="col-xs-10">
 
-<%= form_for(@delivery, url: public_delivery_path) do |f| %>
-  <table>
-  	<tr>
-  	  <td>配送先郵便番号<%= f.text_field :postal_code %></td>
-  	</tr>
-  	<tr>
-      <td>配送先住所<%= f.text_field :address %></td>
-    </tr>
-    <tr>
-      <td>宛名<%= f.text_field :name %></td>
-    </tr>
-  </table>
-  <%= f.submit '編集する' %>
-<% end %>
+  <div class="title-box">
+    <h1 class="title">Delivery Daaress Edit</h1>
+  </div>
+  <%= form_for(@delivery, url: public_delivery_path) do |f| %>
+    <table class="table table-hover">
+  	  <tr>
+  	    <td>配送先郵便番号</td>
+        <td><%= f.text_field :postal_code %></td>
+        <td></td>
+  	  </tr>
+  	  <tr>
+        <td>配送先住所</td>
+        <td><%= f.text_field :address %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>宛名</td>
+        <td><%= f.text_field :name %></td>
+        <td><%= f.submit '完了' %></td>
+      </tr>
+    </table>
+  <% end %>
+    </div>
+    <div class="col-xs-1">
+    </div>
+  </div>
+</div>
