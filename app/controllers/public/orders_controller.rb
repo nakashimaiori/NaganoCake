@@ -8,11 +8,9 @@ class Public::OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
-
 	def new
   	@customer = current_customer
 		@order = Order.new
-		@deliveries = current_customer.deliveries
 	end
 
 	def confirm
@@ -37,11 +35,13 @@ class Public::OrdersController < ApplicationController
 			@delivery.address = params[:order][:new_address]
 			@delivery.name = params[:order][:new_name]
 			@delivery.customer_id = current_customer.id
-			@delivery.save
-
-			@order.receive_postal_code = @delivery.postal_code
-			@order.receive_address = @delivery.address
-			@order.receive_name = @delivery.name
+			if @delivery.save
+				@order.receive_postal_code = @delivery.postal_code
+				@order.receive_address = @delivery.address
+				@order.receive_name = @delivery.name
+			else
+				render "new"
+			end
 		end
 	end
 
