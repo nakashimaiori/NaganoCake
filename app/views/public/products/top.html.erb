@@ -1,45 +1,99 @@
+  <div id="container">
+    <div id="theTarget">
+      <div class="image1"></div>
+      <div class="image2"></div>
+      <div class="image3"></div>
+      <div class="image4"></div>
+      <div class="image5"></div>
+    </div>
+  </div>
+
 <div class="container">
 	<div class="row">
-		<div class="col-xs-2">
+		<div class="col-xs-1">
 			<%= render "public/products/genres_sideber" %>
 		</div>
-		<div class="col-xs-10">
+		  <div class="col-xs-7 welcome">
 			<% if flash[:notice] %>
     　　　　　<p class="notice"></p>
             <% end %>
-
-			<div id="top_image">
 				<div id="top_message_box">
-					<div id="top_message">
-						<p>ようこそ、NaganoCakeへ！<br>
-							このサイトは、ケーキ販売のECサイトになります。<br>
-							会員でない方も商品の閲覧はできますが、<br>
-							購入には会員登録が必要になります。
-						</p>
-					</div>
+						<h1 class="jquery">NaganoCake <i class="fas fa-birthday-cake"></i></h1>
 				</div>
-			</div>
-
-		</div>
-
-	</div>
+				  <div class="wel">　</div>
+				  <div class="wel">新規会員登録の方はこちら<button type="button" class="btn btn-outline-secondary"><%= link_to '新規登録', new_customer_registration_path %></button></div>
+				  <div class="wel">会員登録済の方はこちら<button type="button" class="btn btn-outline-secondary"><%= link_to 'ログイン', new_customer_session_path %></button></div>
+				  <div class="wel">商品一覧をご覧の方はこちら<button type="button" class="btn btn-outline-secondary"><%= link_to '商品一覧', '/public/products' %></button></div>
+				  <div class="wel">ごゆっくりどうぞ。</div>
+		  </div>
+		  <div class="col-xs-4 welcome2">
+			      <div class ="text wel">このサイトは、ケーキ販売のECサイトになります。</div>
+			      <div class ="text wel">会員でない方も商品の閲覧はできますが、</div>
+			      <div class ="text wel">購入には会員登録が必要になります。</div>
+			      <div class ="text textend wel">是非、ご登録よろしくお願いいたします。</div>
+			      <%= link_to(public_about_path) do %>
+			      <div class ="welcome-img">
+			      	<div class="about">
+			      	<p class="main-visual-text">About</p>
+			      </div>
+			      </div>
+			      <% end %>
+		  </div>
+    </div>
 </div>
+<section id="profile" class="profile">
+  <h3 class="main-titles">Special Thanks</h3>
+  <p class="border-bottom"></p>
+    <p class="main-text">
+        It is a long established fact that a reader will be distracted by the readable<br>
+        content of a page when looking at its layout.<br>
+        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
+    </p>
+    <div class="profile-contents clearfix">
+      <div class="profile-box-img">
+        <div class="marumaru-img"></div>
+      </div>
+      <div class="profile-box">
+        <p class="subtitles">Shop Infomation</p>
+        <p class="profile-text">
+          Contrary to popular belief, Lorem Ipsum is not simply random<br>
+          text. It has roots in a piece of classical Lation literature from 45<br>
+          BC, making it over 2000 years old. Richard McClintock, a Latin<br>
+            professor at Hampden-Sydney College in Virginia, looked up<br>
+          one of the more obscure Latin words, consectetur
+        </p>
+        <p class="subtitles">One Team</p>
+        <p class="skills-info">massu/sakatan/ryu/iorin</p>
+      </div>
+    </div>
+</section>
 
-<style>
-	#top_image {
-		background-color: skyblue;
-		width: 80%;
-		height: 300px;
-		background-size: cover;
-  	background-position: center;
-	}
-	#top_message_box {
-	  width: 40%;
-	  height: 200px;
-	  background: rgba(0,0,0,0.5);
-	  padding: 50% auto;
-	  margin: 0 auto;
-	}
-	#top_message {
-	}
-</style>
+<section id="contact" class="contact">
+    <h3 class="main-titles">Official Account</h3>
+    <p class="border-bottom"></p>
+    <p class="main-text">
+      It is a long established fact that a reader will be distracted by the readable<br>
+      content of a page when looking at its layout.<br>
+      The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
+      </p>
+    <div class="contact-contents clearfix">
+      <div class="contact-box">
+        <div class="mail-tell-box">
+            <p class="contact-subtitles">Mail</p>
+            <p class="mail"><u>nikuniku@nikusyoku.com</u></p>
+            <p class="contact-subtitles">Tell</p>
+            <p class="tell"><u>292-2929-2929</u></p>
+        </div>
+      </div>
+        <div class="contact-box">
+          <div class="social">
+            <p class="contact-subtitles">SNS</p>
+            <i class="jquery2 fab fa-facebook-f"></i>
+            <i class="jquery1 fab fa-twitter-square"></i>
+            <i class="jquery3 fab fa-instagram"></i>
+          </div>
+        </div>
+    </div>
+  </section>
+
+
