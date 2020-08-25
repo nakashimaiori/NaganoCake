@@ -20,3 +20,334 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+footer {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  background-color: #CC9966;
+}
+
+.welcome {
+  padding: 30px 0;
+}
+
+.welcome2 {
+  padding: 70px 0;
+}
+
+.wel {
+  margin: 7px 0;
+  color: #663300;
+  font-family: Times New Roman;
+
+}
+
+.jquery {
+  // padding: 30px 0;
+  font-size: 50px;
+  position: relative;
+  font-family: Times New Roman;
+  // color: #6eb0f9;
+  line-height: 1.4;
+  -webkit-box-reflect: below -10px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0) 10%,rgba(0, 0, 0, 0.6));
+}
+
+.style{
+  text-decoration: none;
+}
+.text {
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.textend {
+  margin-bottom: 25px;
+}
+
+.fab {
+  padding: 10px;
+  font-size: 50px;
+}
+
+.footer-text {
+  color: #fff;
+}
+
+#container{
+  height: 400px;
+}
+
+.image1 {
+  background-image: url(do.jpg);
+}
+.image2 {
+  background-image: url(kanure.jpg);
+}
+.image3 {
+  background-image: url(kkk.jpg);
+}
+.image4 {
+  background-image: url(ccc.jpg);
+}
+.image5 {
+  background-image: url(mint.jpg);
+}
+
+
+.profile-box-img {
+  text-align: center;
+  width: 50%;
+  float: left;
+}
+.marumaru-img {
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-image: url(dodo.jpg);
+  background-size: cover;
+  background-position: center;
+
+}
+
+.welcome-img {
+  width: 300px;
+  height: 150px;
+  margin: 30 auto;
+  border-radius: 20px;
+  background-size: cover;
+  background-image: url(mron.jpg);
+  background-position: center;
+
+}
+
+.about {
+  text-align: center;
+  padding-top: 45px;
+}
+
+.main-visual-text {
+  font-size: 45px;
+  color: #FFEBCD;
+  font-family: Times New Roman;
+
+}
+
+.profile {
+  background-color: #99CC99;
+  padding: 30px 0;
+
+}
+
+
+.profile-text{
+  padding-bottom: 20px;
+}
+
+.subtitles {
+  font-size: 20px;
+  padding-bottom: 5px;
+  font-family: Times New Roman;
+
+}
+.contact {
+  padding: 20px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-contents{
+  width: 800px;
+  margin: 0 auto;
+}
+
+.contact-box {
+  width: 50%;
+  float: left;
+}
+
+.mail{
+  padding-bottom: 20px;
+}
+.mail-tell-box{
+  width: 150px;
+  margin: 0 auto;
+}
+
+.social {
+  margin: 0 auto;
+}
+.main-titles {
+  text-align: center;
+  font-size: 32px;
+  padding-bottom: 8px;
+  font-family: Times New Roman;
+
+}
+
+
+.border-bottom {
+  margin: 0 auto;
+  width: 260px;
+  border-bottom: dotted 7px #DAA520;
+}
+
+.main-text{
+  text-align: center;
+  padding: 30px 0;
+}
+
+.strength-title{
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.contact-subtitles{
+  float: none;
+  width: 400px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.ecsite{
+  margin: auto 0;
+}
+
+
+// about 画面
+
+.top {
+  height: 450px;
+}
+.aaa {
+  background-image: url(mint.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 450px;
+}
+.bbb {
+  height: 450px;
+}
+.ccc {
+  height: 450px;
+}
+.aboutleftop {
+  height: 200px;
+  background-color: #fff;
+  text-align: center;
+}
+.about-about {
+  color: #228B22;
+}
+.aboutleftdown {
+  margin-top: 91px;
+  height: 80px;
+  width: 260px;
+  background-color: #fff;
+}
+
+.anytime {
+  color: #BDB76B;
+  text-align: center;
+  font-family: Times New Roman;
+
+}
+
+.access {
+  font-size: 12px;
+  text-align: center;
+}
+.bbb-a {
+  margin-top: 25px;
+  height: 400px;
+  background-image: url(ooo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.ccc-top {
+  height: 200px;
+  background-image: url(cafe.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-top: 25px;
+}
+
+.ccc-down {
+  height: 200px;
+  background-image: url(hole.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-top: 25px;
+}
+
+.about-footer {
+  height: 350px;
+}
+
+.about-about {
+  position: relative;
+  padding: 0.25em 0;
+  font-family: Times New Roman;
+}
+
+
+.about-foota{
+ height: 250px;
+ background-image: url(abo.jpg);
+ background-size: cover;
+ background-position: center;
+}
+
+.about-footb{
+ background-color: #fff;
+ height: 250px;
+}
+
+.about-footc{
+ background-color: orange;
+ height: 250px;
+ background-image: url(ao.jpg);
+ background-size: cover;
+ background-position: center;
+}
+
+.about-footd{
+ background-color: blue;
+ height: 250px;
+ background-color: #fff;
+ background-size: cover;
+ background-position: center;
+ text-align: center;
+}
+
+.footd-box {
+  font-family: Times New Roman;
+  color: #BDB76B;
+  padding: 30px 0;
+}
+
+.ccc-top-a {
+  padding-top: 80px;
+  height: 100px;
+}
+
+.ccc-top-aa {
+  color: #BDB76B;
+  background-color: #fff;
+  font-family: Times New Roman;
+
+}
+
+.ccc-top-aaa {
+  background-color: #fff;
+}
+
+.title-box {
+  padding: 30px;
+}
+
