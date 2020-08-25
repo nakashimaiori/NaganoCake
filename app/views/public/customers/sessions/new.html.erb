@@ -1,37 +1,59 @@
+<div class="">
 <div class="container">
-  <div class="row header">
-    <h2><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>　Sign In</h2>
-  </div>
-    <div class="col-xs-2">
+  <div class="row">
+    <div class="col-xs-4 session">
+      <h1 class="title"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign In</h1>
     </div>
-  <div class="col-xs-8">
+  <div class="col-xs-4 session">
+    <div class="login">
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <%= f.label :メールアドレス %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-
-
-
-      <%= f.label :パスワード %>
-      <%= f.password_field :password, autocomplete: "current-password" %>
-
-
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+      <div class="login-table">
+      <table class="table table-borderless">
+        <tr>
+            <td>
+              <div class="fff"><%= f.label :email %></div>
+            </td>
+            <td>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </td>
+         </tr>
+         <tr>
+            <td>
+              <div class="fff"><%= f.label :password %></div>
+            </td>
+            <td>
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+           <% if devise_mapping.rememberable? %>
+            <div class="field fff">
+              <%= f.check_box :remember_me %>
+               <%= f.label :remember_me %>
+             </div>
+            <% end %>
+            </td>
+            <td>
+              <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+            </td>
+          </tr>
+      </table>
       </div>
     <% end %>
 
-    <div class="actions">
-      <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
-    </div>
-  <% end %>
+    <%= render "public/customers/shared/links" %>
 
-  <%= render "public/customers/shared/links" %>
-    </div>
-    <div class="col-xs-2"></div>
+        </div>
+      </div>
+
+
+    <div class="col-xs-4 session"></div>
   </div>
+  </div>
+</div>
 
 
 

@@ -3,7 +3,7 @@
       <div class="col-xs-1"></div>
       <div class="col-xs-10">
       <div class="title-box">
-        <h1 class="ttitle">Edit <%= resource_name.to_s.humanize %></h1>
+        <h1 class="title">Edit Infomation</h1>
       </div>
 
 
@@ -76,9 +76,9 @@
 
 <% end %>
 
-<%= link_to "退会する", withdraw_public_customers_path(@customer.id), method: :patch %>
+<button type="button" class="btn btn-outline-secondary"><%= link_to "退会する", cancel_public_customers_path %></button>
 
-<%= link_to "Back", :back %>
+<button type="button" class="btn btn-outline-secondary"><%= link_to "Back", :back %></button>
   </div>
 
       <div class="col-xs-1">
