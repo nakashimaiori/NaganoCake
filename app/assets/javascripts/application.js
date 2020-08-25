@@ -20,7 +20,7 @@
 
 $(document).ready(function () {
   $('.jquery').on('click', function(){
-    $(this).css('color','olive');
+    $(this).css('color','#009966');
   });
 });
 

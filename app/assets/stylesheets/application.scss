@@ -39,18 +39,24 @@ footer {
 
 .wel {
   margin: 7px 0;
-  color: #CD853F;
+  color: #663300;
+  font-family: Times New Roman;
+
 }
 
 .jquery {
   // padding: 30px 0;
   font-size: 50px;
   position: relative;
+  font-family: Times New Roman;
   // color: #6eb0f9;
   line-height: 1.4;
   -webkit-box-reflect: below -10px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0) 10%,rgba(0, 0, 0, 0.6));
 }
 
+.style{
+  text-decoration: none;
+}
 .text {
   font-size: 12px;
   margin: 8px 0;
@@ -125,6 +131,8 @@ footer {
 .main-visual-text {
   font-size: 45px;
   color: #FFEBCD;
+  font-family: Times New Roman;
+
 }
 
 .profile {
@@ -141,6 +149,7 @@ footer {
 .subtitles {
   font-size: 20px;
   padding-bottom: 5px;
+  font-family: Times New Roman;
 
 }
 .contact {
@@ -174,6 +183,8 @@ footer {
   text-align: center;
   font-size: 32px;
   padding-bottom: 8px;
+  font-family: Times New Roman;
+
 }
 
 
@@ -243,6 +254,8 @@ footer {
 .anytime {
   color: #BDB76B;
   text-align: center;
+  font-family: Times New Roman;
+
 }
 
 .access {
@@ -279,11 +292,11 @@ footer {
 .about-about {
   position: relative;
   padding: 0.25em 0;
+  font-family: Times New Roman;
 }
 
 
 .about-foota{
- background-color: green;
  height: 250px;
  background-image: url(abo.jpg);
  background-size: cover;
@@ -306,9 +319,16 @@ footer {
 .about-footd{
  background-color: blue;
  height: 250px;
- background-image: url(candy.jpg);
+ background-color: #fff;
  background-size: cover;
  background-position: center;
+ text-align: center;
+}
+
+.footd-box {
+  font-family: Times New Roman;
+  color: #BDB76B;
+  padding: 30px 0;
 }
 
 .ccc-top-a {
@@ -319,8 +339,15 @@ footer {
 .ccc-top-aa {
   color: #BDB76B;
   background-color: #fff;
+  font-family: Times New Roman;
+
 }
 
 .ccc-top-aaa {
   background-color: #fff;
 }
+
+.title-box {
+  padding: 30px;
+}
+
