@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#about_message {
-	text-align: center;
+span {
+	font-size: large;
+}
+
+.product-box {
+}
+
+.product-detial-image {
+	float: left;
+}
+.product-detial {
+	margin-left: 20px;
+	float: left;
+}
+
+.product-detial-text {
+	margin-bottom: 20px;
+}
+
+.footer-margen {
+	height: 50px;
 }

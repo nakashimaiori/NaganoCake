@@ -1,8 +1,13 @@
-  <h1>マイページ</h1>
-  <h3>登録情報</h3>
+  <div class="container">
+  <div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
 
-  <%= link_to '編集する', '/customers/edit' %>
-  <%= link_to 'パスワードを変更する','/customers/password/edit' %>
+  <div class="title-box">
+    <h1 class="title">My Page</h1>
+  </div>
+
+  <button type="button" class="btn btn-outline-secondary"><%= link_to '編集する', '/customers/edit' %></button>
 
   <table class="table table-hover">
     <tr>
@@ -31,5 +36,10 @@
     </tr>
   </table>
 
-  <%= link_to "配送先一覧", public_deliveries_path %>
-  <%= link_to "注文履歴一覧を見る", public_orders_path %>
+  <button type="button" class="btn btn-outline-secondary"><%= link_to "配送先一覧", public_deliveries_path %></button>
+  <button type="button" class="btn btn-outline-secondary"><%= link_to "注文履歴一覧を見る", public_orders_path %></button>
+</div>
+
+<div class="col-xs-1"></div>
+  </div>
+</div>

@@ -36,9 +36,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :orders, except: [:edit, :destroy]
-    post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/confirm' => 'orders#new'
+    resources :orders, except: [:edit, :destroy]
+
+    resources :deliveries, except: [:new, :show]
 
     resource :customers, only: [:show, :edit, :update] do
       member do
@@ -47,7 +50,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :deliveries, except: [:new, :show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
