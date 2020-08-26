@@ -1,48 +1,119 @@
-<h3><%= @customer.last_name+@customer.first_name %>さんの会員情報編集</h3>
- <th>会員ID</th>
-      <th><%= @customer.id %></th>
-<%= form_for(@customer, url: admin_customer_path) do |f| %>
-  <div class="field">
-    <%= f.label :氏名 %>
-    <%= f.text_field :last_name, class: "last_name" %>
-    <%= f.text_field :first_name, class: "first_name" %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 col-md-offset-3">
+      <h1><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h1>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-2">
+            <h4>会員ID</h4>
+          </div>
+          <div class="col-xs-6">
+            <h4><%= @customer.id %></h4>
+          </div>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :フリガナ %>
-    <%= f.text_field :last_name_kana, class: "last_name_kana" %>
-    <%= f.text_field :first_name_kana, class: "first_name_kana" %>
-  </div>
+      <%= form_for(@customer, url: admin_customer_path) do |f| %>
+        <% if @customer.errors.any? %>
+          <div id="error_explanation">
+          <h3><%= @customer.errors.count %> error prohibited this obj from being saved::</h3>
+            <ul>
+              <% @customer.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :郵便番号 %>
-    <%= f.text_field :postal_code, class: "postal_code" %>
-  </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-2">
+              <%= f.label :氏名 %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :last_name, class: "col-xs-12 last_name" %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :first_name, class: "col-xs-12 first_name" %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :住所 %>
-    <%= f.text_field :address, class: "address" %>
-  </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-2">
+              <%= f.label :フリガナ %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :last_name_kana, class: "col-xs-12 last_name_kana" %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :first_name_kana, class: "col-xs-12 first_name_kana" %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :電話番号 %>
-    <%= f.text_field :phone_number, class: "phone_number" %>
-  </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-2">
+              <%= f.label :郵便番号 %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :postal_code, class: "col-xs-12 postal_code" %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, class: "email" %>
-  </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-2">
+              <%= f.label :住所 %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.text_field :address, class: "col-xs-12 address" %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :会員ステータス %>
-    <%= f.radio_button :customer_status, true, checked: true, class: "customer_status" %>
-    <%= f.label :有効 %>
-    <%= f.radio_button :customer_status, false, class: "customer_status" %>
-    <%= f.label :退会済み %>
-  </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-2">
+              <%= f.label :電話番号 %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :phone_number, class: "col-xs-12 phone_number" %>
+            </div>
+          </div>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "変更を保存する" %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-2">
+              <%= f.label :メールアドレス %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.email_field :email, class: "col-xs-12 email" %>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-2">
+              <%= f.label :会員ステータス %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.radio_button :customer_status, :有効, class: "customer_status" %>
+              <%= f.label :有効 %>
+              <%= f.radio_button :customer_status, :退会済, class: "customer_status" %>
+              <%= f.label :退会済み %>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "変更を保存する", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

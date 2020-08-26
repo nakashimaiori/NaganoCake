@@ -2,9 +2,18 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :customer
 
+
   validates :select_address, acceptance: true
-  validates :total_amount, presence: true
-  validates :how_pay, presence: true
+
+  with_options presence: true do
+    validates :receive_postal_code, format: {with: /\A\d{7}\z/}
+    validates :receive_address
+    validates :receive_name, length: {maximum: 20, minimum: 2}
+    validates :total_amount
+    validates :how_pay
+    validates :postage
+    validates :order_status
+  end
 
   enum how_pay: {銀行振込: 0, クレジットカード: 1}
   enum order_status: {入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済: 4}
@@ -19,12 +28,12 @@ class Order < ApplicationRecord
   end
 
   #商品合計金額の算出
-  def sum
-    sum = 0
+  def total_price
+    total_price = 0
     order_items.each do |order_item|
-      sum += order_item.subtotal
+      total_price += order_item.subtotal
     end
-    sum
+    total_price
   end
 end
 

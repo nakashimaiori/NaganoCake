@@ -1,37 +1,45 @@
 <div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
-    <h3>注文履歴詳細</h3>
+  <div class="col-xs-8 col-xs-offset-2 top">
+    <h1>注文履歴詳細</h1>
+  </div>
 
-    <table class="table">
+  <div class="col-xs-8 col-xs-offset-2 tb-pos1">
+    <table class="tb-css">
       <tbody>
-        <tr>
-          <td>購入者</td>
-          <td> <%= @order.receive_name %></td>
+        <tr class="tr-css2">
+          <th class="th-css2">購入者</th>
+          <td class="td-css2"> <%= @order.receive_name %></td>
         </tr>
-        <tr>
-          <td>配送先</td>
-          <td> 〒<%= @order.receive_postal_code %> <%= @order.receive_address %><br><%= @order.receive_name %></td>
+        <tr class="tr-css2">
+          <th class="th-css2">配送先</th>
+          <td class="td-css2"> 〒<%= @order.receive_postal_code %> <%= @order.receive_address %><br><%= @order.receive_name %></td>
         </tr>
-        <tr>
-          <td>支払方法</td>
-          <td> <%= @order.how_pay %> </td>
+        <tr class="tr-css2">
+          <th class="th-css2">支払方法</th>
+          <td class="td-css2"> <%= @order.how_pay %> </td>
         </tr>
-        <tr>
-          <td>注文ステータス</td>
+        <tr class="tr-css2">
+          <th class="th-css2">注文ステータス</th>
           <td>
-            <%= form_for @order, url: admin_order_path do |f| %>
-              <%= f.select :order_status,["入金待ち", "入金確認", "製作中", "発送準備中", "発送済"] %>
-            <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
-            <% end %>
+            <div class="form-horizontal" role="form">
+              <div class="form-group">
+                <%= form_for @order, url: admin_order_path do |f| %>
+                  <div class="col-xs-3">
+                    <%= f.select :order_status,["入金待ち", "入金確認", "製作中", "発送準備中", "発送済"], {}, class: "form-control" %>
+                  </div>
+                <%= f.submit "更新", class: "btn btn-sm" %>
+                <% end %>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>
     </table>
-
   </div>
-  <div class="col-xs-6 col-xs-offset-2">
+
+  <div class="col-xs-5 col-xs-offset-2">
     <table class="table">
-      <thead>
+      <thead class="thead-color">
         <tr>
           <th>商品名</th>
           <th>単価（税込）</th>
@@ -49,10 +57,16 @@
             <!-- 小計を出すためにsubtotalメソッドをorder_itemモデルに定義して呼び出し -->
             <td><%= order_item.subtotal.to_s(:delimited, delimiter: ',') %></td>
             <td>
-              <%= form_for order_item, url: admin_order_item_path(order_item) do |f| %>
-                <%= f.select :made_status,["着手不可", "製作待ち", "製作中", "製作完了"] %>
-                <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
-              <% end %>
+              <div class="form-horizontal" role="form">
+                <div class="form-group">
+                  <%= form_for order_item, url: admin_order_item_path(order_item) do |f| %>
+                    <div class="col-xs-8">
+                      <%= f.select :made_status,["着手不可", "製作待ち", "製作中", "製作完了"], {}, class: "form-control" %>
+                    </div>
+                      <%= f.submit "更新", class: "btn btn-sm" %>
+                  <% end %>
+                </div>
+              </div>
             </td>
           </tr>
         <% end %>
@@ -60,23 +74,23 @@
     </table>
   </div>
 
-  <div class="col-xs-2">
-    <table>
+  <div class="col-xs-3 tb-pos2">
+    <table class="tb-css">
       <tbody>
-        <tr>
-          <td>商品合計</td>
-          <!-- 商品合計を出すためにsumメソッドをorderモデルに定義
+        <tr class="tr-css3">
+          <td class="td-css3">商品合計</td>
+          <!-- 商品合計を出すためにtotal_priceメソッドをorderモデルに定義
           各order_itemの小計（subtotal）をeachを使って足し、商品合計を算出 -->
-          <td><%= @order.sum.to_s(:delimited, delimiter: ',') %>円</td>
+          <td><%= @order.total_price.to_s(:delimited, delimiter: ',') %>円</td>
         </tr>
-        <tr>
-          <td>送料</td>
+        <tr class="tr-css3">
+          <td class="td-css3">送料</td>
           <td><%= @order.postage %>円</td>
         </tr>
-        <tr>
-          <td>請求金額合計</td>
+        <tr class="tr-css3">
+          <td class="td-css3">請求金額合計</td>
           <!-- 商品合計と送料の合計＝請求金額合計 -->
-          <td><%= (@order.sum + @order.postage).to_s(:delimited, delimiter: ',') %>円</td>
+          <td class="td-css3"><%= (@order.total_price + @order.postage).to_s(:delimited, delimiter: ',') %>円</td>
         </tr>
       </tbody>
     </table>
