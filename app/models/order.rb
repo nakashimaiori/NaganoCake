@@ -3,9 +3,6 @@ class Order < ApplicationRecord
   belongs_to :customer
 
   validates :select_address, acceptance: true
-  validates :new_postal_code, presence: true, format: {with: /\A\d{7}\z/}
-  validates :new_address, presence: true
-  validates :new_name, length: {maximum:20, minimum: 2}
   validates :total_amount, presence: true
   validates :how_pay, presence: true
 
