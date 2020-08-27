@@ -28,7 +28,14 @@ Rails.application.routes.draw do
   #customers
   namespace :public do
     get '/about' => 'products#about'
-    resources :products, only: [:index, :show]
+    resources :products, only: [:index, :show] do
+      get 'search/:id' => 'products#search', as: 'search', on: :collection
+      # ジャンル検索機能用
+      # 最終的なurlはpublic/products/search/:id(ジャンルid)になってほしい
+      # on: :collectionがないとurlにproduct_idが入り込むのでこれを除去
+      # prefixのパスがpublic_aboutになってしまうので、as: 'search'でパス名を生成
+      # as: 'search'はsearch_pathを作る記述だが、今回はpublicのネームスペースのproductsの中で指定しているので、search_public_products_pathができている（個人的な解釈です。）
+    end
 
     resources :cart_items, except: [:new, :edit, :show] do
       collection do

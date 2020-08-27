@@ -1,33 +1,41 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-2">
-			<%= render "public/products/genres_sideber" %>
+			<%= render "public/products/genres_sideber", genres: @genres %>
 		</div>
 
 		<div class="col-xs-10">
-			<h2>商品一覧<span>(全 <%= @products.count %> 件)</span></h2>
+			<!-- ジャンル検索用に追記
+			アクションがsearchか否かで条件分岐
+			searchの時「ジャンル名」一覧と表示、それ以外なら「商品」一覧と表示 -->
 
-			<div id="products_box">
+			<% if controller.action_name == "search" %>
+				<h2><%= @genre.name %>一覧<span>(全 <%= @products.count %> 件)</span></h2>
+			<% else %>
+				<h2>商品一覧<span>(全 <%= @products.count %> 件)</span></h2>
+			<% end %>
+
+			<!-- ここまで -->
+
+			<div id="products-box">
 				<% @products.each do |product| %>
-					<div class="col-xs-3">
+					<div class="product-block">
 						<%= link_to(public_product_path(product)) do %>
-							<div class="product_block">
-								<div><%= image_tag attachment_url(product, :image, :fill, 140, 100, format: "jpg") %></div>
-								<div><%= product.name %></div>
-								<div>¥<%= product.tax_price.to_s(:delimited, delimiter: ',') %></div>
-							</div>
+
+							<div><%= image_tag attachment_url(product, :image, :fill, 140, 100, format: "jpg") %></div>
+							<div><%= product.name %></div>
+							<div>¥<%= product.tax_price.to_s(:delimited, delimiter: ',') %></div>
+
 						<% end %>
 					</div>
 				<% end %>
 			</div>
-			<br>
+			<div class="paginat"><%= paginate @products %></div>
 		</div>
 
 		<div class="footer-margen col-xs-12"></div>
 	</div>
 </div>
-
-
 
 
 
