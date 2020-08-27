@@ -12,7 +12,7 @@
 			<% if controller.action_name == "search" %>
 				<h2><%= @genre.name %>一覧<span>(全 <%= @products.count %> 件)</span></h2>
 			<% else %>
-				<h2>商品一覧<span>(全 <%= @products.count %> 件)</span></h2>
+				<h2>商品一覧<span>(全 <%= Product.all.count %> 件)</span></h2>
 			<% end %>
 
 			<!-- ここまで -->

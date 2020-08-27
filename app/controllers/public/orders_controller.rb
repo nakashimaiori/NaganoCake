@@ -46,7 +46,6 @@ class Public::OrdersController < ApplicationController
 	end
 
   def create
-  	params[:order][:how_pay] = params[:order][:how_pay].to_i
   	@order = Order.new(order_params)
   	@order.customer_id = current_customer.id
 		@order.save

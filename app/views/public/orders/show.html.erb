@@ -37,15 +37,15 @@
       <tbody>
         <tr>
           <td>商品合計</td>
-          <td><%= @order.total_price.to_s(:delimited, delimiter: ',') %></td>
+          <td><%= @order.total_price.to_s(:delimited, delimiter: ',') %>円</td>
         </tr>
         <tr>
           <td>配送料</td>
-          <td><%= @order.postage %></td>
+          <td><%= @order.postage %>円</td>
         </tr>
         <tr>
           <td>ご請求額</td>
-          <td><%= (@order.total_price + @order.postage).to_s(:delimited, delimiter: ',') %></td>
+          <td><%= (@order.total_price + @order.postage).to_s(:delimited, delimiter: ',') %>円</td>
         </tr>
       </tbody>
     </table>
@@ -66,10 +66,10 @@
         <% @order_items.each do |order_item| %>
           <tr>
             <td><%= order_item.product.name %></td>
-            <td><%= order_item.after_price.to_s(:delimited, delimiter: ',') %></td>
+            <td><%= order_item.after_price.to_s(:delimited, delimiter: ',') %>円</td>
             <td><%= order_item.qty %></td>
             <!-- 小計を出すためにsubtotalメソッドをorder_itemモデルに定義して呼び出し -->
-            <td><%= order_item.subtotal.to_s(:delimited, delimiter: ',') %></td>
+            <td><%= order_item.subtotal.to_s(:delimited, delimiter: ',') %>円</td>
           </tr>
         <% end %>
       </tbody>
