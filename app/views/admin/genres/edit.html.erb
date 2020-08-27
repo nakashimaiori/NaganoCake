@@ -1,10 +1,10 @@
-<div class="wrapper">
+<div class="container">
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-2 head">
+    <div class="col-xs-10 col-xs-offset-1 head">
       <h1 class="title">Edit Genres</h1>
     </div>
 
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-xs-10 col-xs-offset-1">
 
       <% if @genre.errors.any? %>
         <div id="error_explanation">
@@ -18,7 +18,7 @@
       <% end %>
 
       <div class="form-horizontal" role="form">
-        <div class="col-xs-5">
+        <div class="col-xs-4">
           <%= form_for @genre, url: admin_genre_path do |f| %>
 
             <div class="form-group">
