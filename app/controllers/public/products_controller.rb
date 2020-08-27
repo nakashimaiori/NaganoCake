@@ -12,6 +12,7 @@ class Public::ProductsController < ApplicationController
 
   def top
   	@genres = Genre.where(status: true)
+    @products = Product.where(sale_status: true).order(id: "DESC").page(params[:page]).per(4)
   end
 
   def search

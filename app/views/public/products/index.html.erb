@@ -1,7 +1,9 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-2">
+		<div class="col-xs-1 genre">
 			<%= render "public/products/genres_sideber", genres: @genres %>
+		</div>
+		<div class="col-xs-1">
 		</div>
 
 		<div class="col-xs-10">
@@ -10,9 +12,13 @@
 			searchの時「ジャンル名」一覧と表示、それ以外なら「商品」一覧と表示 -->
 
 			<% if controller.action_name == "search" %>
-				<h2><%= @genre.name %>一覧<span>(全 <%= @products.count %> 件)</span></h2>
+			  <div class="title-box">
+				<h1 class="title"><%= @genre.name %>一覧<span>(全 <%= @products.count %> 件)</span></h1>
+			  </div>
 			<% else %>
-				<h2>商品一覧<span>(全 <%= @products.count %> 件)</span></h2>
+			  <div class="title-box">
+				<h1 class="title">商品一覧<span>(全 <%= Product.all.count %> 件)</span></h1>
+			  </div>
 			<% end %>
 
 			<!-- ここまで -->
@@ -36,7 +42,3 @@
 		<div class="footer-margen col-xs-12"></div>
 	</div>
 </div>
-
-
-
-

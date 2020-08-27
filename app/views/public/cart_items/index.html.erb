@@ -47,7 +47,8 @@
                   <%= f.submit "変更", class: "btn btn-primary" %>
                 <% end %>
               </td>
-			  <td><%= @subtotal = cart_item.product.tax_price * cart_item.item_qty %>円</td>
+			  <% @subtotal = cart_item.product.tax_price * cart_item.item_qty %>
+			   <td><%= @subtotal.to_s(:delimited, delimiter: ',') %></td>
 			    <% @sum += @subtotal %>
 			    <% @num += cart_item.item_qty %>
 			  <td>
@@ -65,7 +66,7 @@
       <td class="col-xs-6"></td>
       <td class="col-xs-1"><strong>商品計</strong></td>
       <td class="col-xs-1"><%= @num %>点</td>
-      <td class="col-xs-3"><strong>合計金額　</strong><%= @sum %>円</td>
+      <td class="col-xs-3"><strong>合計金額　</strong><%= @sum.to_s(:delimited, delimiter: ',') %>円</td>
       <td class="col-xs-1"><button type="button" class="btn btn-outline-secondary"><%= link_to '購入手続きへ', new_public_order_path %></button></td>
     </tr>
   </table>
