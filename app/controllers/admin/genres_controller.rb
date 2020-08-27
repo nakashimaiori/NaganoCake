@@ -9,6 +9,11 @@ class Admin::GenresController < ApplicationController
     @genre =Genre.find(params[:id])
     if @genre.update(genre_params)
       flash[:notice] = "ジャンルを更新しました"
+    CartItem.all.each do |cart|
+      if cart.product.genre.status == "無効"
+         cart.destroy
+      end
+    end
       redirect_to admin_genres_path
     else
       render :edit

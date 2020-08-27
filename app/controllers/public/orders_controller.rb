@@ -10,7 +10,10 @@ class Public::OrdersController < ApplicationController
 
 	def new
   	@customer = current_customer
-		@order = Order.new
+    @order = Order.new
+      # @customer.cart_items.each do |cart|
+      #   cart.
+      # end
 	end
 
 	def confirm
