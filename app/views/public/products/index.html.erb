@@ -25,6 +25,7 @@
 
 			<div id="products-box">
 				<% @products.each do |product| %>
+			      <% if product.genre.status == '有効' %>
 					<div class="product-block">
 						<%= link_to(public_product_path(product)) do %>
 
@@ -34,6 +35,7 @@
 
 						<% end %>
 					</div>
+			      <% end %>
 				<% end %>
 			</div>
 			<div class="paginat"><%= paginate @products %></div>
