@@ -10,13 +10,17 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-1">
-			<%= render "public/products/genres_sideber", genres: @genres %>
+		<div class="col-xs-1 genre">
+      <%= render "public/products/genres_sideber", genres: @genres %>
 		</div>
-		  <div class="col-xs-7 welcome">
+    <div class="col-xs-1">
+    </div>
+
+		  <div class="col-xs-6 welcome">
 			<% if flash[:notice] %>
     　　　　　<p class="notice"></p>
             <% end %>
+      <div class="topbox">
 				<div id="top_message_box">
 						<h1 class="jquery">NaganoCake <i class="fas fa-birthday-cake"></i></h1>
 				</div>
@@ -25,7 +29,10 @@
 				  <div class="wel">会員登録済の方はこちら<button type="button" class="btn btn-outline-secondary"><%= link_to 'ログイン', new_customer_session_path %></button></div>
 				  <div class="wel">商品一覧をご覧の方はこちら<button type="button" class="btn btn-outline-secondary"><%= link_to '商品一覧', '/public/products' %></button></div>
 				  <div class="wel">ごゆっくりどうぞ。</div>
-		  </div>
+    </div>
+    </div>
+
+
 		  <div class="col-xs-4 welcome2">
 			      <div class ="text wel">このサイトは、ケーキ販売のECサイトになります。</div>
 			      <div class ="text wel">会員でない方も商品の閲覧はできますが、</div>
@@ -41,6 +48,27 @@
 		  </div>
     </div>
 </div>
+
+<div class="con">
+    <div class="recomend">
+      <div class="main-titles">Recommend</div>
+      <p class="border-bottom"></p>
+        <div class="reco">
+        <% @products.each do |product| %>
+          <div class="product-block main-text sweets-box">
+            <%= link_to(public_product_path(product)) do %>
+
+              <div><%= image_tag attachment_url(product, :image, :fill, 200, 200, format: "jpg"), class: "img-circle" %></div>
+              <div><%= product.name %></div>
+              <div>¥<%= product.tax_price.to_s(:delimited, delimiter: ',') %></div>
+
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+    </div>
+</div>
+
 <section id="profile" class="profile">
   <h3 class="main-titles">Special Thanks</h3>
   <p class="border-bottom"></p>
@@ -72,9 +100,9 @@
     <h3 class="main-titles">Official Account</h3>
     <p class="border-bottom"></p>
     <p class="main-text">
-      It is a long established fact that a reader will be distracted by the readable<br>
+      <!-- It is a long established fact that a reader will be distracted by the readable<br>
       content of a page when looking at its layout.<br>
-      The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
+      The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters -->
       </p>
     <div class="contact-contents clearfix">
       <div class="contact-box">
