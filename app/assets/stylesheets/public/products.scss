@@ -6,7 +6,17 @@ span {
 	font-size: large;
 }
 
-.product-box {
+
+#products-box {
+	height: 400px;
+	width: 100%;
+}
+
+.product-block {
+	height: 200px;
+	width: 200px;
+	padding: 0 auto;
+	float: left;
 }
 
 .product-detial-image {
@@ -24,3 +34,4 @@ span {
 .footer-margen {
 	height: 50px;
 }
+
