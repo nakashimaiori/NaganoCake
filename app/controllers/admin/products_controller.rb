@@ -13,7 +13,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       flash[:notice] = "商品を作成しました"
-      redirect_to admin_products_path
+      redirect_to admin_product_path(@product.id)
     else
       render :new
     end

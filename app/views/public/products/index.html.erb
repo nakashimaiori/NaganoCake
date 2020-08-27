@@ -1,11 +1,21 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-2">
-			<%= render "public/products/genres_sideber" %>
+			<%= render "public/products/genres_sideber", genres: @genres %>
 		</div>
 
 		<div class="col-xs-10">
-			<h2>商品一覧<span>(全 <%= Product.all.count %> 件)</span></h2>
+			<!-- ジャンル検索用に追記
+			アクションがsearchか否かで条件分岐
+			searchの時「ジャンル名」一覧と表示、それ以外なら「商品」一覧と表示 -->
+
+			<% if controller.action_name == "search" %>
+				<h2><%= @genre.name %>一覧<span>(全 <%= @products.count %> 件)</span></h2>
+			<% else %>
+				<h2>商品一覧<span>(全 <%= @products.count %> 件)</span></h2>
+			<% end %>
+
+			<!-- ここまで -->
 
 			<div id="products-box">
 				<% @products.each do |product| %>
@@ -26,7 +36,3 @@
 		<div class="footer-margen col-xs-12"></div>
 	</div>
 </div>
-
-
-
-
