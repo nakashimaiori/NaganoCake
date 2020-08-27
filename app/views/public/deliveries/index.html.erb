@@ -36,7 +36,7 @@
     <tr>
       <td>宛名</td>
       <td><%= f.text_field :name %></td>
-      <td><div class="text-left"><%= f.submit '登録', class: "btn btn-primary" %></div></td>
+      <td><div class="text-left"><%= f.submit '登録', class: "btn btn-outline-secondary" %></div></td>
       <td></td>
     </tr>
   </table>
@@ -60,7 +60,7 @@
 	    <td>〒<%= delivery.postal_code %></td>
 	    <td><%= delivery.address %></td>
 	    <td><%= delivery.name %></td>
-	    <td><%= link_to "編集する", edit_public_delivery_path(delivery), class: 'btn btn-primary' %></td>
+	    <td><button type="button" class="btn btn-outline-success"><%= link_to "編集する", edit_public_delivery_path(delivery) %></button></td>
 	    <td><%=link_to public_delivery_path(delivery), method: :delete do %>
        <i class="far fa-trash-alt"></i>
       <% end %>
