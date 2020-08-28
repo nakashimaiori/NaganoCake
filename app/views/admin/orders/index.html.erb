@@ -20,7 +20,7 @@
             <!-- タイムゾーンの設定がデフォルトでUTCになっているのでconfig/application.rbにconfig.time_zone = 'Tokyo'を追記。
               config/initializers/time_formats.rbを作成し、表示方法を記述。created_at.to_s(:datatime_jp)で表示する -->
             <td><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order), class: "link-style" %></td>
-            <td><%= order.receive_name %></td>
+            <td><%= order.customer.last_name + order.customer.first_name %></td>
             <!-- total_qtyメソッドをorderモデルで定義　注文個数の合計を算出 -->
             <td><%= order.total_qty %></td>
             <td><%= order.order_status %></td>
