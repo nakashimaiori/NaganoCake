@@ -539,3 +539,25 @@ footer {
   font-size: 45px;
   color: #996633;
 }
+
+// topスクロール
+.scroll {
+  margin     : auto;
+  font-size  : 140%;
+  line-height: 1.5em;
+  text-align : center;
+  color      : red;
+  background : #fff;
+  overflow   : hidden;
+}
+.scroll span{
+  display     : inline-block;
+  padding-left: 100%;
+  white-space : nowrap;
+  line-height : 1em;
+  animation   : scrollAnime 15s linear infinite;
+}
+@keyframes scrollAnime{
+    0% { transform: translateX(0)}
+  100% { transform: translateX(-100%)}
+}
