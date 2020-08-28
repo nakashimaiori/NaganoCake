@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
 
 	def new
   	@customer = current_customer
-		@order = Order.new
+    @order = Order.new
 	end
 
 	def confirm
