@@ -7,7 +7,9 @@
       <div class="image5"></div>
     </div>
   </div>
-
+<div class="scroll">
+  <span>期間限定！！　復刻プリン販売中！！　創業当時から変わらない味！</span>
+</div>
 <div class="container">
 	<div class="row">
 		<div class="col-xs-1 genre">
@@ -55,6 +57,7 @@
       <p class="border-bottom"></p>
         <div class="reco">
         <% @products.each do |product| %>
+          <% if product.genre.status == '有効' %>
           <div class="product-block main-text sweets-box">
             <%= link_to(public_product_path(product)) do %>
 
@@ -64,9 +67,11 @@
 
             <% end %>
           </div>
+          <% end %>
         <% end %>
         </div>
     </div>
+    <% paginate @products %>
 </div>
 
 <section id="profile" class="profile">
