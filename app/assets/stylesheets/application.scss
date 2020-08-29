@@ -46,6 +46,9 @@ footer {
 
 // ----------------------------------------------------
 
+.concon {
+  background-color: #999999;
+}
 
 .welcome {
   padding: 30px 0;
@@ -70,7 +73,13 @@ footer {
 }
 
 .link {
-  text-decoration: none;
+  text-decoration: none !important;
+  color: #663300
+}
+
+.linkpink {
+  text-decoration: none !important;
+  color: #99CCCC
 }
 
 

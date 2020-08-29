@@ -52,7 +52,7 @@ class Public::OrdersController < ApplicationController
 
 		current_customer.cart_items.each do |cart_item|
 		  @order_item = OrderItem.new
-			@order_item.order_id = @order.id
+		  @order_item.order_id = @order.id
 		  @order_item.product_id = cart_item.product_id
 		  @order_item.qty = cart_item.item_qty
 		  @order_item.after_price = cart_item.product.tax_price
