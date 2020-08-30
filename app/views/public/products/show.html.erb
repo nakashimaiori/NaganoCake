@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+        <div class="col-xs-1 genre">
+        	<%= render "public/products/genres_sideber", genres: @genres %>
+        </div>
+		<div class="col-xs-1"></div>
+
+		<div class="flashmessage">
+			<% if flash[:notice] %>
+			  <p class="notice"></p>
+      <% end %>
+    </div>
+
+	<div class="col-xs-10">
+
+      <div class="detail">
+		<div class="title-box">
+			<h1 class="title">商品詳細</h1>
+		</div>
+		<%= form_for(@cart_item, url: public_cart_items_path) do |f| %>
+
+			<div class="product-detial-image">
+				<%= image_tag attachment_url(@product, :image, :fill, 300, 200, format: "jpg") %>
+			</div>
+
+			<div class="product-detial">
+				<div class="product-detial-text"><%= @product.name %></div>
+				<div class="product-detial-text"><%= @product.detail %></div>
+				<div class="product-detial-text">¥<%= @product.tax_price.to_s(:delimited, delimiter: ',') %>(税込)</div>
+
+				<%= f.hidden_field :product_id, :value => @product.id %>
+
+				<div class="product-detial-text"><%= f.number_field :item_qty, class: "cart_item_class", min: 1, max: 99 %>個</div>
+				<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+			</div>
+
+		<% end %>
+	  </div>
+	</div>
+	<div class="footer-margen col-xs-12"></div>
+	</div>
+</div>

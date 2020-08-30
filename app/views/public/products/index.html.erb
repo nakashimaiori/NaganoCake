@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-1 genre">
+			<%= render "public/products/genres_sideber", genres: @genres %>
+		</div>
+		<div class="col-xs-1">
+		</div>
+
+		<div class="col-xs-10">
+			<!-- ジャンル検索用に追記
+			アクションがsearchか否かで条件分岐
+			searchの時「ジャンル名」一覧と表示、それ以外なら「商品」一覧と表示 -->
+
+			<% if controller.action_name == "search" %>
+			  <div class="title-box">
+				<h1 class="title"><%= @genre.name %>一覧<span>(全 <%= @products.count %> 件)</span></h1>
+			  </div>
+			<% else %>
+			  <div class="title-box">
+				<h1 class="title">商品一覧<span>(全 <%= Product.all.count %> 件)</span></h1>
+			  </div>
+			<% end %>
+
+			<!-- ここまで -->
+
+			<div id="products-box">
+				<% @products.each do |product| %>
+			      <% if product.genre.status == '有効' %>
+					<div class="product-block">
+						<%= link_to(public_product_path(product)) do %>
+
+							<div><%= image_tag attachment_url(product, :image, :fill, 140, 100, format: "jpg") %></div>
+							<div><%= product.name %></div>
+							<div>¥<%= product.tax_price.to_s(:delimited, delimiter: ',') %></div>
+
+						<% end %>
+					</div>
+			      <% end %>
+				<% end %>
+			</div>
+			<div class="paginat"><%= paginate @products %></div>
+		</div>
+
+		<div class="footer-margen col-xs-12"></div>
+	</div>
+</div>

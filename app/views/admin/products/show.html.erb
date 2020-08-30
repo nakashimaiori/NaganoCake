@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 head">
+      <h1 class="title">Product Details</h1>
+    </div>
+
+    <div class="col-xs-10 col-xs-offset-1">
+
+        <div class="col-xs-6">
+          <div class="field row img-pos">
+            <%= attachment_image_tag @product, :image, :fill, 300, 300, fallback: "no-image.jpg", size: "300x300" %>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <table class="tb-css">
+            <tbody>
+              <tr class="tr-css">
+                <th class="th-css">商品名</th>
+                <td class="td-css"><%= @product.name %></td>
+              </tr>
+              <tr class="tr-css">
+                <th class="th-css">商品説明</th>
+                <td class="td-css"><%= @product.detail %></td>
+              </tr>
+              <tr class="tr-css">
+                <th class="th-css">ジャンル</th>
+                <td class="td-css"><%= @product.genre.name %></td>
+              </tr>
+              <tr class="tr-css">
+                <!-- 記述を整理する
+                priceにbefore_price（税抜き価格）に消費税を乗算したもの（税込価格）を代入
+                .roundで小数点以下を非表示
+                .to_s(:delimited, delimiter: ',')で金額を三桁区切りで表示 -->
+                <% price = @product.before_price * 1.1 %>
+                <th class="th-css">税込価格（税抜価格）</th>
+                <td class="td-css"><%= price.round.to_s(:delimited, delimiter: ',') %> (<%= @product.before_price.to_s(:delimited, delimiter: ',') %>)円</td>
+              </tr>
+              <tr class="tr-css">
+                <th class="th-css">販売ステータス</th>
+                <td class="td-css">
+                  <% if @product.sale_status == true %>
+                    販売中
+                  <% else %>
+                    販売停止中
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <%= button_to '編集する', edit_admin_product_path(@product), method: :get, class: "btn btn-lg btn-pos col-xs-12" %>
+        </div>
+
+    </div>
+  </div>
+</div>

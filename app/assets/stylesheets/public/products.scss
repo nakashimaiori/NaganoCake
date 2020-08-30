@@ -1,0 +1,41 @@
+// Place all the styles related to the public/products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+span {
+	font-size: large;
+}
+
+
+#products-box {
+	height: 400px;
+	width: 100%;
+}
+
+.product-block {
+	height: 200px;
+	width: 200px;
+	padding: 0 auto;
+	float: left;
+}
+
+.product-detial-image {
+	float: left;
+}
+.product-detial {
+	margin-left: 20px;
+	float: left;
+}
+
+.product-detial-text {
+	margin-bottom: 20px;
+}
+
+.footer-margen {
+	height: 50px;
+}
+
+// .detail {
+//   margin-left: 100px;
+// }
+

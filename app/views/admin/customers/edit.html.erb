@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 col-md-offset-3 head">
+      <h1 class="title"><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h1>
+
+      <div class="form-horizontal" role="form">
+        <%= form_for(@customer, url: admin_customer_path) do |f| %>
+          <% if @customer.errors.any? %>
+            <div id="error_explanation">
+            <h3><%= @customer.errors.count %> error prohibited this obj from being saved::</h3>
+              <ul>
+                <% @customer.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+
+          <div class="form-group">
+            <div class="col-xs-2">
+              <label for="会員Id">会員Id</label>
+            </div>
+            <div class="col-xs-10">
+              <label for="customer id"><%= @customer.id %></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2">
+              <%= f.label :氏名 %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :last_name, class: "form-control last_name" %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :first_name, class: "form-control first_name" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2">
+              <%= f.label :フリガナ %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :last_name_kana, class: "form-control last_name_kana" %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :first_name_kana, class: "form-control first_name_kana" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2">
+              <%= f.label :郵便番号 %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :postal_code, class: "form-control postal_code" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2">
+              <%= f.label :住所 %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.text_field :address, class: "form-control address" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2">
+              <%= f.label :電話番号 %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.text_field :phone_number, class: "form-control phone_number" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2">
+              <%= f.label :メールアドレス %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.email_field :email, class: "form-control email" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2">
+              <%= f.label :会員ステータス %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.radio_button :customer_status, :有効, class: "customer_status" %>
+              <%= f.label :有効 %>
+              <%= f.radio_button :customer_status, :退会済, class: "customer_status" %>
+              <%= f.label :退会済み %>
+            </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "変更を保存する", class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
